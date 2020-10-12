@@ -16,10 +16,13 @@ Route::get('locale/{locale}', function ($locale){
     return redirect()->back();
 })->name('locale');
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/admin', function () {
-    return view('admin');
+Auth::routes();
+
+Route::name('admin.')
+    ->prefix('admin')
+    ->middleware(['auth', 'can:accessAdmin'])
+    ->group(function () {
+    Route::get('dashboard', 'DashboardController@index')->name('index');   
 });

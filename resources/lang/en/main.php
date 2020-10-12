@@ -13,5 +13,7 @@ return [
     'favorite_books' => 'Favorite books',
     'random_publishers' => 'Publisher',
     'view_book' => 'See details',
+    'hello' => 'Hello',
+    'my_account' => 'My account'
 
 ];

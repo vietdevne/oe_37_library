@@ -12,10 +12,8 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
-
-mix.styles('public/css/custom.css', 'public/css/site.css')
-   .version();
-
-mix.styles('public/css/dashboard.css', 'public/css/admin.css')
+   .js('public/js/custom.js','public/js/site.js')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .styles('public/css/custom.css', 'public/css/site.css')
+   .styles('public/css/dashboard.css', 'public/css/admin.css')
    .version();

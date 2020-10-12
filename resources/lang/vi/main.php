@@ -7,11 +7,13 @@ return [
     'home' => 'Trang chủ',
     'categories' => 'Danh mục',
     'login' => 'Đăng nhập',
-    'locate_vi' => 'Vietnamese',
-    'locate_en' => 'Tiếng Anh',
+    'locate_vi' => 'Tiếng Việt',
+    'locate_en' => 'English',
     'latest_books' => 'Sách mới',
     'favorite_books' => 'Sách được yêu thích',
     'random_publishers' => 'Nhà xuất bản',
     'view_book' => 'Xem chi tiết',
+    'hello' => 'Xin chào',
+    'my_account' => 'Tài khoản của tôi'
 
 ];
