@@ -7,6 +7,7 @@
   <title>@yield('title')</title>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="{{ mix('css/site.css') }}" rel="stylesheet">
+  <base href="{{ asset('') }}">
 </head>
 <body class="bg-white">
   <header>

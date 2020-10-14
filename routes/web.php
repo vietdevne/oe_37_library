@@ -27,6 +27,7 @@ Route::name('admin.')
     Route::get('dashboard', 'DashboardController@index')->name('index');   
     Route::resources([
         'authors' => 'AuthorController',
+        'publishers' => 'PublisherController',
     ]);
     
 });

@@ -7,6 +7,7 @@
   <title>@yield('title')</title>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
+  <base href="{{ asset('') }}">
 </head>
 <body>
   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -38,12 +39,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ route('admin.authors.index') }}">
                 @lang('admin.authors')
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ route('admin.publishers.index') }}">
                 @lang('admin.publishers')
               </a>
             </li>

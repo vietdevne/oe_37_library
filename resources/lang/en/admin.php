@@ -43,6 +43,7 @@ return [
     ],
     'publisher_form' => [
         'title_add_form' => 'Add publisher',
+        'title_edit_form' => 'Edit publisher',
         'label_name' => 'Publisher name:',
         'label_avatar' => 'Logo:',
         'label_desc' => 'Publisher description:'
