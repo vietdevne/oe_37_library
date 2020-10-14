@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
@@ -17,6 +17,7 @@ class User extends Model
 
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
         'fullname',
@@ -52,6 +53,11 @@ class User extends Model
 
     public function setPasswordAttribute($password) 
     {
-        $this->attributes['password'] = md5($password);
+        $this->attributes['password'] = bcrypt($password);
     }
+
+    public function role($role) {     
+        if($role == $this->role) return true;
+        return false; 
+     }
 }
