@@ -25,4 +25,8 @@ Route::name('admin.')
     ->middleware(['auth', 'can:accessAdmin'])
     ->group(function () {
     Route::get('dashboard', 'DashboardController@index')->name('index');   
+    Route::resources([
+        'authors' => 'AuthorController',
+    ]);
+    
 });
