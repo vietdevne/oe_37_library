@@ -14,6 +14,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'paginateAuthor' => env('paginate', 6),
+    'paginatePublisher' => env('paginate', 6),
 
     /*
     |--------------------------------------------------------------------------

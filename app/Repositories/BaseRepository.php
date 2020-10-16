@@ -31,7 +31,6 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         $result = $this->model->find($id);
         if ($result) {
-
             return $result;
         }
         

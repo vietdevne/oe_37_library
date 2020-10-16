@@ -43,6 +43,7 @@ return [
     ],
     'publisher_form' => [
         'title_add_form' => 'Thêm Nhà xuất bản',
+        'title_edit_form' => 'Sửa Nhà xuất bản',
         'label_name' => 'Tên Nhà xuất bản:',
         'label_avatar' => 'Logo:',
         'label_desc' => 'Thông tin Nhà xuất bản: '
