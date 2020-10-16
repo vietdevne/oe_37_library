@@ -130,6 +130,20 @@ return [
     'paginate' => 15,
 
     /*
+    user gender
+    */
+    
+    'gender_male' => 1,
+    
+    'gender_female' => 0,
+
+    /*
+    paginate
+    */
+
+    'paginate' => 15,
+
+    /*
     |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
@@ -213,7 +227,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-
+        App\Providers\ViewServiceProvider::class,
     ],
 
     /*

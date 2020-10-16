@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('cate_id')->autoIncrement();
             $table->string('cate_name', 50)->unique();
             $table->text('cate_desc')->nullable();
-            $table->integer('parent_id');
+            $table->integer('parent_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

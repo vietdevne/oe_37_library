@@ -13,6 +13,20 @@ return [
         'date_format' => 'Hãy nhập đúng định dạng ngày tháng',
         'unique_email' => 'Email đã được dùng bởi người khác',
         'before_date' => 'Sinh nhật phải trước ngày hôm nay',
+        'required_cate_name' => 'Tên danh mục không được để trống',
+    ],
+    'category' => [
+        'create' => 'Tạo danh mục mới',
+        'name' => 'Tên danh mục',
+        'description' => 'Mô tả',
+        'create' => 'Tạo danh mục',
+        'parent' => 'Danh mục mẹ',
+        'edit' => 'Sửa danh mục',
+    ],
+    'category_message' => [
+        'edit_success' => 'Sửa thành công',
+        'not_found' => 'Không tìm thấy danh mục',
+        'create_success' => 'Tạo danh mục thành công'
     ],
     'user' => [
         'fullname' => 'Họ & tên',

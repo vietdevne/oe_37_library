@@ -29,9 +29,13 @@ Route::name('admin.')
         'authors' => 'AuthorController',
         'publishers' => 'PublisherController',
     ]);
- 
+    
     Route::resource('users', 'UserController', ['only' => [
         'index', 'edit', 'update', 'destroy'
+    ]]);   
+
+    Route::resource('categories', 'CategoryController', ['except' => [
+        'show'
     ]]);    
     Route::get('publishers-export', 'PublisherController@export')->name('publishers.export');
     Route::get('authors-export', 'AuthorController@export')->name('authors.export');
