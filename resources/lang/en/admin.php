@@ -2,8 +2,36 @@
 
 return [
     'home' => 'Dashboard',
+    'date_format' => 'm/d/yy',
     'categories' => 'Categories',
     'users' => 'Users',
+    'edit_user' => 'Edit user',
+    'validation' => [
+        'required_fullname' => 'Name must be enter',
+        'required_gender' => 'Gender must be chosen',
+        'required_role' => 'The role must be chosen',
+        'date_format' => 'Please enter the correct date format',
+        'unique_email' => 'Email has been used by someone else',
+        'before_date' => 'Birthday must be before today',
+    ],
+    'user' => [
+        'fullname' => 'Full name',
+        'email' => 'Email',
+        'birthday' => 'Birthday',
+        'phone' => 'Phone number',
+        'username' => 'Username',
+        'gender' => 'Gender',
+        'created_at' => 'Created At',
+        'role' => 'Role',
+        'admin_role' => 'Admin',
+        'user_role' => 'User'
+    ],
+    'user_message' => [
+        'del_success' => 'Delete success',
+        'del_error' => 'Delete failed',
+        'not_found' => 'User not found',
+        'edit_success' => 'Edit success'
+    ],
     'authors' => 'Authors',
     'publishers' => 'Publishers',
     'books' => 'Books',

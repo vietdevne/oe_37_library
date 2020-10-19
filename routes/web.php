@@ -29,5 +29,8 @@ Route::name('admin.')
         'authors' => 'AuthorController',
         'publishers' => 'PublisherController',
     ]);
-    
+ 
+    Route::resource('users', 'UserController', ['only' => [
+        'index', 'edit', 'update', 'destroy'
+    ]]);    
 });

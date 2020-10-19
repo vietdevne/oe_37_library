@@ -14,9 +14,9 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'paginateAuthor' => env('paginate', 6),
+    'paginateAuthor' => env('paginate', 6),	
     'paginatePublisher' => env('paginate', 6),
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -98,10 +98,34 @@ return [
     /*
     user role
     */
-
     'admin_role' => 1,
 
     'user_role' => 0,
+    
+    'roles' => [
+        'user_role' => 0,
+        'admin_role' => 1,
+    ],
+
+    /*
+    user gender
+    */
+    
+    'gender_male' => 1,
+    
+    'gender_female' => 0,
+
+    'genders' => [
+        'gender_male' => 0,
+        'gender_female' => 1,
+    ],
+
+    /*
+    paginate
+    */
+
+    
+    'paginate' => 15,
 
     /*
     |--------------------------------------------------------------------------
@@ -235,7 +259,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
     ],
 
 ];
