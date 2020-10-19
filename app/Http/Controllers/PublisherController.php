@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PublisherRequest;
+use Illuminate\Http\Request;
+use App\Models\Publisher;
+use Illuminate\Support\Facades\Config;
 use App\Repositories\RepositoryInterface\PublisherRepositoryInterface;
+use App\Exports\PublisherExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Session;
 
 class PublisherController extends Controller
 {
@@ -17,9 +23,13 @@ class PublisherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $publishers = $this->publisherRepository->getPublisher();
+        $key = $request->input('search');
+        $request->session()->put('search', $key);
+        $publishers = Publisher::latest()->search($key)
+            ->paginate(Config::get('app.paginatePublisher'));
 
         return view('publishers.view', compact('publishers'));
     }
@@ -104,5 +114,16 @@ class PublisherController extends Controller
         }
 
         return redirect()->back()->with('Fail', trans('message.author.del_fail'));
+    }
+
+    public function export(Request $request)
+    {
+        if($request->session()->has('search')) {
+            $queryValue = $request->session()->get('search');
+
+            return (new PublisherExport($queryValue))->download(Config::get('app.exportPublisher'));
+        }
+        return redirect()->back();
+        
     }
 }

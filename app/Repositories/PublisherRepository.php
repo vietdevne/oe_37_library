@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Publisher;
 use App\Repositories\RepositoryInterface\PublisherRepositoryInterface;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 class PublisherRepository extends BaseRepository implements PublisherRepositoryInterface

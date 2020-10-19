@@ -12,3 +12,5 @@ yarn-error.log
 .env
 .DS_Store
 /public
+/stubs
+/storage/framework/laravel-excel

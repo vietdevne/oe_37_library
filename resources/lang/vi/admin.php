@@ -40,16 +40,16 @@ return [
     'author_table' => [
         'title_table' => 'Danh sách tác giả',
         'id_col' => 'ID',
-        'name_col' => 'Tên tác giả',
+        'name_col' => 'Tên',
         'avatar_col' => 'Ảnh',
-        'desc_col' => 'Thông tin tác giả',
+        'desc_col' => 'Thông tin',
     ],
     'author_form' => [
         'title_add_form' => 'Thêm tác giả',
         'title_edit_form' => 'Sửa tác giả',
-        'label_name' => 'Tên tác giả:',
+        'label_name' => 'Tên :',
         'label_avatar' => 'Ảnh:',
-        'label_desc' => 'Thông tin tác giả: '
+        'label_desc' => 'Thông tin: '
     ],
     'validate_author' => [
         'name_required' => 'Không được để trống tên tác giả!',
@@ -58,28 +58,38 @@ return [
         'author_avatar' => 'Không để ảnh trống',
     ],
     'actions' => [
-        'new' => '+ Thêm mới',
+        'new' => 'Thêm',
         'edit' => 'Sửa',
         'delete' => 'Xóa',
     ],
     'publisher_table' => [
         'title_table' => 'Danh sách nhà xuất bản',
         'id_col' => 'ID',
-        'name_col' => 'Tên nhà xuất bản',
+        'name_col' => 'Tên',
         'logo_col' => 'Logo',
-        'desc_col' => 'Thông tin nhà xuất bản',
+        'desc_col' => 'Thông tin',
     ],
     'publisher_form' => [
         'title_add_form' => 'Thêm Nhà xuất bản',
         'title_edit_form' => 'Sửa Nhà xuất bản',
-        'label_name' => 'Tên Nhà xuất bản:',
+        'label_name' => 'Tên:',
         'label_avatar' => 'Logo:',
-        'label_desc' => 'Thông tin Nhà xuất bản: '
+        'label_desc' => 'Thông tin: '
     ],
     'validate_publisher' => [
         'name_required' => 'Không được để trống tên Nhà xuất bản!',
         'name_unique' => 'Tên Nhà xuất bản đã tồn tại!',
         'pub_desc' => 'Không được để trống thông tin Nhà xuất bản!',
         'pub_logo' => 'Không để ảnh trống',
+    ],
+    'publisherExport' => [
+        'id' => 'ID',
+        'name' => 'Tên nhà xuất bản',
+        'desc' => 'Thông tin nhà xuất bản',
+        'logo' => 'Logo',
+    ],
+    'search' => [
+        'publisher' => 'tìm nhà xuất bản theo tên, thông tin, ngày tạo,...',
+        'author' => 'tìm tác giả theo tên, thông tin, ngày tạo,...'
     ],
 ];
