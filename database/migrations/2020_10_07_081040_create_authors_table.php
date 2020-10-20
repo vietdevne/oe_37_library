@@ -16,7 +16,7 @@ class CreateAuthorsTable extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('authors', function (Blueprint $table) {
             $table->unsignedBigInteger('author_id')->autoIncrement();
-            $table->string('name', 50);
+            $table->string('author_name', 50);
             $table->text('author_avatar')->nullable();
             $table->text('author_desc')->nullable();
             $table->timestamps();

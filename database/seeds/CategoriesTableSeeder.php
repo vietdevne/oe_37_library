@@ -12,13 +12,23 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
-        for ($i = 0; $i < 10; $i++) {
-            Category::create([
-                'cate_name' => $faker->company(),
-                'cate_desc' =>$faker->text($maxNbChars = 200),
-                'parent_id' => $faker->numberBetween($min = 1, $max = 10),
-            ]);
-        }
+        $categories = [
+        [
+            'cate_name' => 'Văn Học',
+            'cate_desc' => 'Mua online sách văn học và tiểu thuyết nhanh và an toàn nhất tại Bookbuy. Đổi trả hàng miễn phí. Giao hàng cực nhanh',
+            'parent_id' => null,
+        ], [
+            'cate_name' => 'Văn học Việt Nam',
+            'cate_desc' => 'Mua online sách văn học và tiểu thuyết nhanh và an toàn nhất tại Bookbuy. Đổi trả hàng miễn phí. Giao hàng cực nhanh',
+            'parent_id' => 1,
+        ], [
+            'cate_name' => 'Văn học nước ngoài',
+            'cate_desc' => 'Mua online sách văn học và tiểu thuyết nhanh và an toàn nhất tại Bookbuy. Đổi trả hàng miễn phí. Giao hàng cực nhanh',
+            'parent_id' => 1,
+        ]
+    ];
+    foreach($categories as $cat) {
+        Category::create($cat);
+    }
     }
 }

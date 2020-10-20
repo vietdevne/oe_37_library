@@ -2,14 +2,17 @@
 
 namespace App\Providers;
 
+use View;
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\RepositoryInterface\PublisherRepositoryInterface;
-use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
+use Illuminate\Pagination\Paginator;
 use App\Repositories\AuthorRepository;
 use App\Repositories\PublisherRepository;
-use Illuminate\Pagination\Paginator;
 use App\Repositories\UserRepository;
+use App\Repositories\CategoryRepository;
 use App\Repositories\RepositoryInterface\UserRepositoryInterface;
+use App\Repositories\RepositoryInterface\CategoryRepositoryInterface;
+use App\Repositories\RepositoryInterface\PublisherRepositoryInterface;
+use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,6 +40,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             UserRepositoryInterface::class,
             UserRepository::class
+        );
+
+        $this->app->singleton(
+            CategoryRepositoryInterface::class,
+            CategoryRepository::class
         );
     }
 }

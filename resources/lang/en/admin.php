@@ -13,6 +13,20 @@ return [
         'date_format' => 'Please enter the correct date format',
         'unique_email' => 'Email has been used by someone else',
         'before_date' => 'Birthday must be before today',
+        'required_cate_name' => 'Category Name must be enter',
+    ],
+    'category' => [
+        'create' => 'Create new',
+        'name' => 'Category Name',
+        'description' => 'Description',
+        'create' => 'Create',
+        'parent' => 'Parent',
+        'edit' => 'Edit',
+    ],
+    'category_message' => [
+        'edit_success' => 'Edit success',
+        'not_found' => 'Category not found',
+        'create_success' => 'Create category success'
     ],
     'user' => [
         'fullname' => 'Full name',
