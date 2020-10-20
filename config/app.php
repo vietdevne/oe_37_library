@@ -16,8 +16,10 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
     'paginateAuthor' => env('paginate', 6), 
     'paginatePublisher' => env('paginate', 6),
+    'paginateUser' => env('paginate', 6),
     'exportPublisher' => 'publishers.xlsx',
     'exportAuthor' => 'authors.xlsx',
+    'exportUser' => 'users.xlsx',
     
     /*
     |--------------------------------------------------------------------------
@@ -118,8 +120,8 @@ return [
     'gender_female' => 0,
 
     'genders' => [
-        'gender_male' => 0,
-        'gender_female' => 1,
+        'gender_male' => 1,
+        'gender_female' => 0,
     ],
 
     /*

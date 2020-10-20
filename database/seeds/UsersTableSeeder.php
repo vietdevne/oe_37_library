@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
                 'fullname' => $faker->name(),
                 'birthday' => $faker->dateTime($max = 'now', $timezone = null),
                 'phone' => $faker->e164PhoneNumber(),
-                'gender' => $faker->title($gender = 'male'|'female'),
+                'gender' => $faker->numberBetween($min = 0, $max = 1),
                 'role' => 0,
             ]);
         }

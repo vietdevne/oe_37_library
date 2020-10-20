@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Config;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\RepositoryInterface\UserRepositoryInterface;
+use App\Exports\UserExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -22,9 +25,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $users = $this->user->getAll();
+        $key = $request->input('search');
+        $request->session()->put('search', $key);
+        $users = User::latest()->search($key)
+            ->paginate(Config::get('app.paginateUser'));
 
         return view('user.users', compact('users'));
     }
@@ -71,5 +78,16 @@ class UserController extends Controller
         if(!$user) return redirect()->route('admin.users.index')->with('message', ['msg' => trans('admin.user_message.not_found'), 'status' => 'danger']);
 
         return redirect()->route('admin.users.index')->with('message', ['msg' => trans('admin.user_message.del_success'), 'status' => 'success']);
+    }
+
+    public function export(Request $request)
+    {
+        if($request->session()->has('search')) {
+            $queryValue = $request->session()->get('search');
+
+            return (new UserExport($queryValue))->download(Config::get('app.exportUser'));
+        }
+        return redirect()->back();
+        
     }
 }
