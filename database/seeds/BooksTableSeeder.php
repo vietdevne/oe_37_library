@@ -19,7 +19,6 @@ class BooksTableSeeder extends Seeder
                 'pub_id' => $faker->numberBetween($min = 1, $max = 10),
                 'cate_id' => $faker->numberBetween($min = 1, $max = 10),
                 'book_title' => $faker->text($maxNbChars = 40),
-                'book_image' => $faker->text($maxNbChars = 40),
                 'book_desc' => $faker->text($maxNbChars = 40),
                 'unit_price' => $faker->numberBetween($min = 10000, $max = 99999),
                 'book_info' => $faker->text($maxNbChars = 40),
