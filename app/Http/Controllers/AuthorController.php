@@ -122,6 +122,6 @@ class AuthorController extends Controller
 
             return (new AuthorExport($queryValue))->download(Config::get('app.exportAuthor'));
         }
-        return redirect()->back();
+        return redirect()->back(); 
     }
 }

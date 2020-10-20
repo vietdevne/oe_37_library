@@ -22,7 +22,7 @@ class AuthorExport implements FromQuery
     {
         return Author::query()->where('author_name', 'LIKE', '%' . $this->search . '%')
             ->orWhere('author_desc', 'LIKE', '%' . $this->search . '%')
-            ->orWhere('updated_at', 'LIKE', '%' . $this->search . '%');
+            ->orWhere('updated_at', 'LIKE', '%' . $this->search . '%'); 
     }
 
 }

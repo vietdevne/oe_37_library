@@ -26,7 +26,7 @@ class Author extends Model
 
     public function scopeSearch($query, $key)
     {
-        return $query->where('author_name', 'LIKE', '%' . $key . '%')
+        return $query->where('author_name', 'LIKE', '%' . $key . '%') 
             ->orWhere('author_desc', 'LIKE', '%' . $key . '%')
             ->orWhere('updated_at', 'LIKE', '%' . $key . '%');
     }

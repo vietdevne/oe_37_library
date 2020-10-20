@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'paginateAuthor' => env('paginate', 6),
+    'paginateAuthor' => env('paginate', 6), 
     'paginatePublisher' => env('paginate', 6),
     'exportPublisher' => 'publishers.xlsx',
     'exportAuthor' => 'authors.xlsx',
