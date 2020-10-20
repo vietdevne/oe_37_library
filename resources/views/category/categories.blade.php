@@ -6,6 +6,16 @@
     <div><a href="{{ route('admin.categories.create') }}"><button class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
             @lang('admin.category.create')</button></a></div>
 </div>
+
+<div class="input-group mb-3">
+    <form action="{{ route('admin.categories.index') }}" method="GET" class="form-inline input-group">
+      <input name="search" type="text" class="form-control" placeholder="{{ trans('admin.search.category') }}">
+      <div class="input-group-append" id="button-addon4">
+        <button type="submit" class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
+</div>
+
 @if (session('message'))
 <div class="alert alert-{{ session('message.status') }} mb-4">
     {{ session('message.msg') }}
@@ -26,13 +36,13 @@
                 <td><a href="#"><b>{{ $category->cate_name }}</b></a></td>
                 <td>{{ str_limit($category->cate_desc, 40) }}</td>
                 <td>
-                    <form action="{{ route('admin.categories.destroy',$category->cate_id) }}" method="POST"
+                    <form action="{{ route('admin.categories.destroy', $category->cate_id) }}" method="POST"
                         class="form-inline">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-sm btn-outline-danger mr-1"><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
-                        <a href="{{ route('admin.categories.edit',$category->cate_id) }}">
+                        <a href="{{ route('admin.categories.edit', $category->cate_id) }}">
                             <button type="button" class="btn btn-sm btn-outline-success"><i class="fa fa-pen"
                                     aria-hidden="true"></i></button>
                         </a>
@@ -44,13 +54,13 @@
                 <td><a href="#"><b>― {{ $subCategory->cate_name }}</b></a></td>
                 <td>{{ str_limit($subCategory->cate_desc, 40) }}</td>
                 <td>
-                    <form action="{{ route('admin.categories.destroy',$subCategory->cate_id) }}" method="POST"
+                    <form action="{{ route('admin.categories.destroy', $subCategory->cate_id) }}" method="POST"
                         class="form-inline">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-sm btn-outline-danger mr-1"><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
-                        <a href="{{ route('admin.categories.edit',$subCategory->cate_id) }}">
+                        <a href="{{ route('admin.categories.edit', $subCategory->cate_id) }}">
                             <button type="button" class="btn btn-sm btn-outline-success"><i class="fa fa-pen"
                                     aria-hidden="true"></i></button>
                         </a>

@@ -10,6 +10,11 @@ class CategoryRepository implements CategoryRepositoryInterface
         return Category::whereNull('parent_id')->with('children')->paginate(config('app.paginate'));
     }
 
+    public function getWithKey($key)
+    {
+        return Category::search($key)->paginate(config('app.paginate'));
+    }
+
     public function getAllNoPagination()
     {
         return Category::whereNull('parent_id')->with('children')->get();
