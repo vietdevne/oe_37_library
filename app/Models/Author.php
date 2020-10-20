@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Book;
 
 class Author extends Model
 {
@@ -21,5 +22,12 @@ class Author extends Model
     public function books()
     {
         return $this->hasMany(Book::class);
+    }
+
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('author_name', 'LIKE', '%' . $key . '%')
+            ->orWhere('author_desc', 'LIKE', '%' . $key . '%')
+            ->orWhere('updated_at', 'LIKE', '%' . $key . '%');
     }
 }

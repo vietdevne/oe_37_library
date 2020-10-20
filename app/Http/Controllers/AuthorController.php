@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthorRequest;
+use Illuminate\Http\Request;
+use App\Models\Author;
+use Illuminate\Support\Facades\Config;
 use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
+use App\Exports\AuthorExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AuthorController extends Controller
 {
@@ -17,9 +22,13 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */ 
-    public function index()
+    public function index(Request $request)
     {
         $authors = $this->authorRepository->getAuthor();
+        $key = $request->input('search');
+        $request->session()->put('search', $key);
+        $authors = Author::latest()->search($key)
+            ->paginate(Config::get('app.paginateAuthor'));
 
         return view('authors.view', compact('authors'));
     }
@@ -104,5 +113,15 @@ class AuthorController extends Controller
         }
         
         return redirect()->back()->with('Fail', trans('message.author.del_fail'));
+    }
+
+    public function export(Request $request)
+    {
+        if($request->session()->has('search')) {
+            $queryValue = $request->session()->get('search');
+
+            return (new AuthorExport($queryValue))->download(Config::get('app.exportAuthor'));
+        }
+        return redirect()->back();
     }
 }

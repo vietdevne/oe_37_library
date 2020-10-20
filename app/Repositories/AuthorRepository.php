@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Author;
 use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class AuthorRepository extends BaseRepository implements BaseRepositoryInterface
 {
@@ -15,7 +17,7 @@ class AuthorRepository extends BaseRepository implements BaseRepositoryInterface
 
     public function getAuthor()
     {
-        return $this->model->orderBy('author_id','DESC')->get();
+        return $this->model->orderBy('author_id','DESC')->paginate(Config::get('app.paginateAuthor'));
     }
 
     public function findAuthor($authorId)

@@ -58,7 +58,7 @@ return [
         'author_avatar' => 'Do not leave the image',
     ],
     'actions' => [
-        'new' => '+ New',
+        'new' => 'New',
         'edit' => 'Edit',
         'delete' => 'Delete',
     ],
@@ -81,5 +81,15 @@ return [
         'name_unique' => 'Publisher name already exists',
         'pub_desc' => 'Do not leave the login field blank',
         'pub_logo' => 'Do not leave the image',
+    ],
+    'publisherExport' => [
+        'id' => 'ID',
+        'name' => 'Publisher Name',
+        'desc' => 'Publisher Description',
+        'logo' => 'Logo',
+    ],
+    'search' => [
+        'publisher' => 'search publisher with name, description, updated day,...',
+        'author' => 'search author with name, description, updated day,...'
     ],
 ];

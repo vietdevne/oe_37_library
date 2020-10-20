@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Book;
 
 class Publisher extends Model
 {
@@ -21,5 +22,12 @@ class Publisher extends Model
     public function books()
     {
         return $this->hasMany(Book::class);
+    }
+
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('pub_name', 'LIKE', '%' . $key . '%')
+            ->orWhere('pub_desc', 'LIKE', '%' . $key . '%')
+            ->orWhere('updated_at', 'LIKE', '%' . $key . '%');
     }
 }

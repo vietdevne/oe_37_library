@@ -33,4 +33,6 @@ Route::name('admin.')
     Route::resource('users', 'UserController', ['only' => [
         'index', 'edit', 'update', 'destroy'
     ]]);    
+    Route::get('publishers-export', 'PublisherController@export')->name('publishers.export');
+    Route::get('authors-export', 'AuthorController@export')->name('authors.export');
 });
