@@ -7,7 +7,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function getAll()
     {
-        return User::paginate(config('app.paginate'));
+        return User::paginate(config('app.paginateUser'));
     }
 
     public function find($id)

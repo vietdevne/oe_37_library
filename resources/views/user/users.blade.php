@@ -2,6 +2,17 @@
 @section('title',trans('admin.users'))
 @section('content')
 <h2 class="mt-4 mb-4">@lang('admin.users')</h2>
+
+<div class="input-group mb-3">
+    <form action="{{ route('admin.users.index') }}" method="GET" class="form-inline input-group">
+      <input name="search" type="text" class="form-control" placeholder="{{ trans('admin.search.user') }}">
+      <div class="input-group-append" id="button-addon4">
+        <button type="submit" class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+        <a href="{{ route('admin.users.export') }}" class="btn btn-outline-secondary"><i class="fas fa-file-export"></i></a>
+      </div>
+    </form>
+</div>
+
 @if (session('message'))
     <div class="alert alert-{{ session('message.status') }} mb-4">
         {{ session('message.msg') }}

@@ -39,4 +39,6 @@ Route::name('admin.')
     ]]);    
     Route::get('publishers-export', 'PublisherController@export')->name('publishers.export');
     Route::get('authors-export', 'AuthorController@export')->name('authors.export');
+    Route::get('users-export', 'UserController@export')->name('users.export');
+    
 });

@@ -104,6 +104,7 @@ return [
     ],
     'search' => [
         'publisher' => 'search publisher with name, description, updated day,...',
-        'author' => 'search author with name, description, updated day,...'
+        'author' => 'search author with name, description, updated day,...',
+        'user' => 'search user with name, role 0 or 1',
     ],
 ];
