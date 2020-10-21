@@ -21,9 +21,9 @@ class CreateBooksTable extends Migration
             $table->unsignedBigInteger('cate_id');
             $table->string('book_title', 125);
             $table->text('book_image')->nullable();
-            $table->text('book_desc');
-            $table->integer('unit_price');
-            $table->text('book_info')->nullable();
+            $table->text('book_desc')->nullable();
+            $table->integer('view')->default(0);
+            $table->integer('quantity')->default(0);
             $table->foreign('author_id')->references('author_id')->on('authors');
             $table->foreign('pub_id')->references('pub_id')->on('publishers');
             $table->foreign('cate_id')->references('cate_id')->on('categories');

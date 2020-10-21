@@ -15,6 +15,20 @@ return [
         'before_date' => 'Sinh nhật phải trước ngày hôm nay',
         'required_cate_name' => 'Tên danh mục không được để trống',
     ],
+    'book' => [
+        'create' => 'Thêm sách mới',
+        'name' => 'Tiêu đề',
+        'thumbnail' => 'Ảnh bìa',
+        'description' => 'Mô tả',
+        'quantity' => 'Số lượng',
+        'create_success' => 'Thêm sách mới thành công',
+        'create_error' => 'Thêm sách mới thất bại',
+        'title' => 'Tiêu đề',
+        'category' => 'Danh mục',
+        'author' => 'Tác giả',
+        'publisher' => 'Nhà Xuất bản',
+        
+    ],
     'category' => [
         'create' => 'Tạo danh mục mới',
         'name' => 'Tên danh mục',

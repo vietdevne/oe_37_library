@@ -15,6 +15,11 @@ class PublisherRepository extends BaseRepository implements PublisherRepositoryI
         return Publisher::class;
     }
 
+    public function getAllPublisher()
+    {
+        return $this->model->all();
+    }
+
     public function getPublisher()
     {
         return $this->model->orderBy('pub_id', 'DESC')->paginate(Config::get('app.paginatePublisher'));
