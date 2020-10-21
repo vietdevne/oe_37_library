@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Book;
 
 class Category extends Model
 {
@@ -32,5 +33,10 @@ class Category extends Model
     public function parent()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('cate_name', 'LIKE', '%' . $key . '%');
     }
 }

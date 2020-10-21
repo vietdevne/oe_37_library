@@ -26,7 +26,8 @@ return [
     'category_message' => [
         'edit_success' => 'Edit success',
         'not_found' => 'Category not found',
-        'create_success' => 'Create category success'
+        'create_success' => 'Create category success',
+        'del_success' => 'Delete success',
     ],
     'user' => [
         'fullname' => 'Full name',
@@ -106,5 +107,6 @@ return [
         'publisher' => 'search publisher with name, description, updated day,...',
         'author' => 'search author with name, description, updated day,...',
         'user' => 'search user with name, role 0 or 1',
+        'category' => 'search category with name...',
     ],
 ];

@@ -17,6 +17,7 @@ return [
     'paginateAuthor' => env('paginate', 6), 
     'paginatePublisher' => env('paginate', 6),
     'paginateUser' => env('paginate', 6),
+    'paginateCategory' => env('paginate', 6),
     'exportPublisher' => 'publishers.xlsx',
     'exportAuthor' => 'authors.xlsx',
     'exportUser' => 'users.xlsx',

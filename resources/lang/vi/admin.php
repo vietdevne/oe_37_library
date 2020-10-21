@@ -26,7 +26,8 @@ return [
     'category_message' => [
         'edit_success' => 'Sửa thành công',
         'not_found' => 'Không tìm thấy danh mục',
-        'create_success' => 'Tạo danh mục thành công'
+        'create_success' => 'Tạo danh mục thành công',
+        'del_success' => 'Xóa danh mục thành công',
     ],
     'user' => [
         'fullname' => 'Họ & tên',
@@ -105,6 +106,7 @@ return [
     'search' => [
         'publisher' => 'tìm nhà xuất bản theo tên, thông tin, ngày tạo,...',
         'author' => 'tìm tác giả theo tên, thông tin, ngày tạo,...',
-        'user' => 'tìm người dùng theo tên, phân quyền 0 hoặc 1,...'
+        'user' => 'tìm người dùng theo tên, phân quyền 0 hoặc 1,...',
+        'category' => 'tìm danh mục theo tên ...',
     ],
 ];

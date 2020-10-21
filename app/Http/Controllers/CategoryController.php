@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCategoryRequest;
+use Illuminate\Support\Facades\Config;
 use App\Repositories\RepositoryInterface\CategoryRepositoryInterface;
 
 class CategoryController extends Controller
@@ -19,10 +21,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = $this->category->getAll();
-
+        $key = $request->input('search');
+        if (!$key) {
+            $categories = $this->category->getAll();
+        } else {
+            $categories = $this->category->getWithKey($key);
+        }
+        
         return view('category.categories', compact('categories'));
     }
 
