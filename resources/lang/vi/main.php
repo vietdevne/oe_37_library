@@ -12,7 +12,10 @@ return [
     'latest_books' => 'Sách mới',
     'favorite_books' => 'Sách được yêu thích',
     'random_publishers' => 'Nhà xuất bản',
-    'view_book' => 'Xem chi tiết',
+    'book' => [
+        'view_book' => 'Chi tiết',
+        'borrow_book' => 'Mượn sách',
+    ],
     'hello' => 'Xin chào',
     'my_account' => 'Tài khoản của tôi'
 

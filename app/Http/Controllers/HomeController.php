@@ -4,19 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\RepositoryInterface\CategoryRepositoryInterface;
+use App\Repositories\RepositoryInterface\BookRepositoryInterface;
 
 class HomeController extends Controller
 {
     protected $category;
+    protected $book;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(CategoryRepositoryInterface $category)
-    {
+    public function __construct(
+        CategoryRepositoryInterface $category,
+        BookRepositoryInterface $book
+    ){
         $this->category = $category;
+        $this->book = $book;
     }
 
     /**
@@ -26,6 +31,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $lastest = $this->book->getLastestBook();
+
+        return view('home', compact('lastest'));
     }
 }
