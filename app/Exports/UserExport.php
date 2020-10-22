@@ -12,14 +12,14 @@ class UserExport implements FromQuery
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function __construct($search)
+    public function __construct($fullname, $role)
     {
-        $this->search = $search;
+        $this->fullname = $fullname;
+        $this->role = $role;
     }
 
     public function query()
     {
-        return User::query()->where('fullname', 'LIKE', '%' . $this->search . '%')
-            ->orWhere('role', 'LIKE', '%' . $this->search . '%');
+        return User::query()->fullname($this->fullname)->role($this->role);
     }
 }
