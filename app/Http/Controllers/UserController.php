@@ -27,12 +27,13 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = $this->user->getAll();
         $key = $request->input('search');
-        $request->session()->put('search', $key);
-        $users = User::latest()->search($key)
-            ->paginate(Config::get('app.paginateUser'));
-
+        if (!$key) {
+            $users = $this->user->getAll();
+        } else {
+            $users = $this->user->getWithKey($key);
+            $request->session()->put('search', $key);
+        }
         return view('user.users', compact('users'));
     }
 

@@ -24,12 +24,13 @@ class AuthorController extends Controller
      */ 
     public function index(Request $request)
     {
-        $authors = $this->authorRepository->getAuthor();
         $key = $request->input('search');
-        $request->session()->put('search', $key);
-        $authors = Author::latest()->search($key)
-            ->paginate(Config::get('app.paginateAuthor'));
-
+        if (!$key) {
+            $authors = $this->authorRepository->getAuthor();
+        } else {
+            $authors = $this->authorRepository->getWithKey($key);
+            $request->session()->put('search', $key);
+        }
         return view('authors.view', compact('authors'));
     }
 

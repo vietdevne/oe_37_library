@@ -20,6 +20,11 @@ class AuthorRepository extends BaseRepository implements BaseRepositoryInterface
         return $this->model->orderBy('author_id','DESC')->paginate(Config::get('app.paginateAuthor'));
     }
 
+    public function getWithKey($key)
+    {
+        return Author::search($key)->paginate(config('app.paginate'));
+    }
+
     public function findAuthor($authorId)
     {
         return Author::find($authorId);

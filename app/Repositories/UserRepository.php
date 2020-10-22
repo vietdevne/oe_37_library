@@ -15,6 +15,11 @@ class UserRepository implements UserRepositoryInterface
         return User::find($id);
     }
 
+    public function getWithKey($key)
+    {
+        return User::search($key)->paginate(config('app.paginate'));
+    }
+
     public function create($attributes = []){
 
     }
