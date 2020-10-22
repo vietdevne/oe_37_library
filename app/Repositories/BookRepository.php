@@ -29,7 +29,7 @@ class BookRepository implements BookRepositoryInterface
                 $file->move('images/books', $thumb);
             }
             $data['book_image'] = $thumb;
-            $publisher = Book::create($data);
+            Book::create($data);
             return true;
         } catch (Exception $exception) {
             return false;

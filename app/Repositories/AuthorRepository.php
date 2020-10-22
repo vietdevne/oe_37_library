@@ -29,7 +29,7 @@ class AuthorRepository extends BaseRepository implements BaseRepositoryInterface
     {
         return Author::find($authorId);
     }
-
+    
     public function createAuthor(array $data)
     {
         $result = false;

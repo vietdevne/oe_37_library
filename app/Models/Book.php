@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -15,9 +16,12 @@ class Book extends Model
     protected $fillable = [
         'book_title',
         'book_image',
+        'cate_id',
+        'author_id',
+        'pub_id',
+        'quantity',
         'book_desc',
-        'unit_price',
-        'book_info',
+        
     ];
 
     public function publisher()

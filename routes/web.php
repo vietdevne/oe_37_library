@@ -29,7 +29,9 @@ Route::name('admin.')
         'authors' => 'AuthorController',
         'publishers' => 'PublisherController',
     ]);
-    
+    Route::get('publishers-export', 'PublisherController@export')->name('publishers.export');
+    Route::get('authors-export', 'AuthorController@export')->name('authors.export');
+
     Route::resource('users', 'UserController', ['only' => [
         'index', 'edit', 'update', 'destroy'
     ]]);   
@@ -41,4 +43,8 @@ Route::name('admin.')
     Route::get('authors-export', 'AuthorController@export')->name('authors.export');
     Route::get('users-export', 'UserController@export')->name('users.export');
     
+    Route::resource('books', 'BookController', ['except' => [
+        'show'
+    ]]);
+
 });
