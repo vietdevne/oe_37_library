@@ -49,4 +49,10 @@ class Book extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function scopeLastest($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+    
 }

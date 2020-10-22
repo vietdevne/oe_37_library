@@ -132,6 +132,8 @@ return [
     
     'paginate' => 15,
 
+    'lastest' => 4,
+
     /*
     user gender
     */

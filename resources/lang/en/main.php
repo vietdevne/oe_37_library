@@ -12,7 +12,10 @@ return [
     'latest_books' => 'Latest books',
     'favorite_books' => 'Favorite books',
     'random_publishers' => 'Publisher',
-    'view_book' => 'See details',
+    'book' => [
+        'view_book' => 'See details',
+        'borrow_book' => 'Borrow book',
+    ],
     'hello' => 'Hello',
     'my_account' => 'My account'
 
