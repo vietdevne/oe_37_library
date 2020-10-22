@@ -48,8 +48,8 @@ class BookController extends Controller
     public function create()
     {
         $categories = $this->category->getAllNoPagination();
-        $publishers = $this->publisher->getPublisher();
-        $authors = $this->author->getAuthor();
+        $publishers = $this->publisher->getAllPublisher();
+        $authors = $this->author->getAllAuthor();
 
         return view('book.create', compact('categories', 'publishers', 'authors'));
     }
@@ -76,7 +76,13 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $book = $this->book->find($id);
+        if(!$book)
+            return abort(404);
+        else
+            $this->book->viewCounter($id);
+
+        return view('book.detail', compact('book'));
     }
 
     /**
