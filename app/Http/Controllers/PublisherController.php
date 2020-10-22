@@ -25,12 +25,13 @@ class PublisherController extends Controller
      */
     public function index(Request $request)
     {
-        $publishers = $this->publisherRepository->getPublisher();
         $key = $request->input('search');
-        $request->session()->put('search', $key);
-        $publishers = Publisher::latest()->search($key)
-            ->paginate(Config::get('app.paginatePublisher'));
-
+        if (!$key) {
+            $publishers = $this->publisherRepository->getPublisher();
+        } else {
+            $publishers = $this->publisherRepository->getWithKey($key);
+            $request->session()->put('search', $key);
+        }
         return view('publishers.view', compact('publishers'));
     }
 

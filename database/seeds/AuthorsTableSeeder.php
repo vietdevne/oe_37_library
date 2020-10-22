@@ -15,8 +15,8 @@ class AuthorsTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 10; $i++) {
             Author::create([
-                'author_name' => $faker->name(),
-                'author_desc' => $faker->text($maxNbChars = 100),
+                'author_name' => 'Nguyễn Ngọc Ngạn',
+                'author_desc' => 'Người mang truyện ma tới làng văn học Việt Nam',
             ]);
         }
     }
