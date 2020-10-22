@@ -12,10 +12,12 @@ return [
     'latest_books' => 'Latest books',
     'favorite_books' => 'Favorite books',
     'random_publishers' => 'Publisher',
+    'close' => 'Close',
     'book' => [
-        'view_book' => 'Detail',
-        'borrow_book' => 'Borrow',
-        'like_book' => 'Like',
+        'name' => 'Title',
+        'view_book' => 'See details',
+        'borrow_book' => 'Borrow book',
+        'like_book' => 'Thích',
         'review' => 'Review',
         'review_error' => 'Error',
         'view' => 'Views',
@@ -23,15 +25,27 @@ return [
         'author' => 'Author',
         'publisher' => 'Publisher',
         'rating' => 'Rating',
-        'review_message' => 'Comment',
-        'review_rating' => 'Rating',
+        'request_borrow' => 'Send request to borrow',
+        'review_message' => 'Review message',
+        'review_rating' => 'Review rating',
         'choose_rating' => 'Choose rating',
-        'send_review' => 'Send',
+        'send_review' => 'Send Review',
         'notLogin' => 'You must be logged in to rate',
-        
+        'not_enough_quantity' => 'The quantity is not enough to borrow',
+        'borrow' => [
+            'date_borrow' => 'Borrow Date',
+            'date_return' => 'Return Date',
+            'borrow_success' => 'Submit request to borrow success, check the status of borrow history',
+            'borrow_error' => 'Borrow error',
+        ]
     ],
     'validate_review' => 'Do not leave comments blank',
     'hello' => 'Hello',
     'my_account' => 'My account',
-
+    'validate' => [
+        'borrow_date_required' => 'Please select a start date to borrow',
+        'return_date_required' => 'Please select a return date',
+        'borrow_date_after' => 'The date of borrowing must be today',
+        'return_date_after' => 'The return date must be after the date the book is borrowed'
+    ]
 ];
