@@ -30,6 +30,7 @@ class BookRepository implements BookRepositoryInterface
             }
             $data['book_image'] = $thumb;
             Book::create($data);
+
             return true;
         } catch (Exception $exception) {
             return false;
@@ -38,16 +39,28 @@ class BookRepository implements BookRepositoryInterface
         return false;        
     }
 
-    public function update($id, $attributes = [])
+    public function update($bookId, $data = [])
     {
-        $user = Book::find($id);
-        if($user){
-            $user->update($attributes);
-            
-            return true;
+        try {
+            if ($data['book_image']) {
+                $file = $data['book_image'];
+                $image = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move('images/books', $image);
+            }
+            $book = $this->find($bookId);
+            $book->book_title = $data['book_title'];
+            $book->book_image = $image;
+            $book->book_desc = $data['book_desc'];
+            $book->quantity = $data['quantity'];
+            $book->author_id = $data['author_id'];
+            $book->pub_id = $data['pub_id'];
+            $book->cate_id = $data['cate_id'];
+            $book->save();
+        } catch (Exception $exception) {
+            return false;
         }
-        
-        return false;
+
+        return true;
     }
 
     public function delete($id)

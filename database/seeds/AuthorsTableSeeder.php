@@ -12,11 +12,10 @@ class AuthorsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
         for ($i = 0; $i < 10; $i++) {
             Author::create([
-                'author_name' => 'Nguyễn Ngọc Ngạn',
-                'author_desc' => 'Người mang truyện ma tới làng văn học Việt Nam',
+                'author_name' => 'Nguyễn Ngọc Ngạn '. $i,
+                'author_desc' => 'Người mang truyện ma tới làng văn học Việt Nam ' . $i,
             ]);
         }
     }

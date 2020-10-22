@@ -48,8 +48,8 @@ class BookController extends Controller
     public function create()
     {
         $categories = $this->category->getAllNoPagination();
-        $publishers = $this->publisher->getAllPublisher();
-        $authors = $this->author->getAllAuthor();
+        $publishers = $this->publisher->getPublisher();
+        $authors = $this->author->getAuthor();
 
         return view('book.create', compact('categories', 'publishers', 'authors'));
     }
@@ -85,9 +85,14 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($bookId)
     {
-        //
+        $book = $this->book->find($bookId);
+        $categories = $this->category->getAllNoPagination();
+        $publishers = $this->publisher->getPublisher();
+        $authors = $this->author->getAuthor();
+
+        return view('book.edit', compact('book', 'categories', 'publishers', 'authors'));
     }
 
     /**
@@ -97,9 +102,12 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateBookRequest $request, $bookId)
     {
-        //
+        if ($this->book->update($bookId, $request->all())) {
+            return redirect()->route('admin.books.index')->with('message', ['msg' => trans('admin.book.update_success'), 'status' => 'success']);
+        }
+        return redirect()->route('admin.books.index')->with('message', ['msg' => trans('admin.book.update_error'), 'status' => 'error']);               
     }
 
     /**
@@ -108,8 +116,12 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($bookId)
     {
-        //
+        $book = $this->book->delete($bookId);
+        if (!$book) {
+            return redirect()->route('admin.books.index')->with('message', ['msg' => trans('admin.book.delete_error'), 'status' => 'danger']);
+        }
+        return redirect()->back()->with('message', ['msg' => trans('admin.book.delete_success'), 'status' => 'success']);
     }
 }
