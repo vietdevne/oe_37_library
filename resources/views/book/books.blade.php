@@ -27,22 +27,22 @@
             <tr>
                 <td><a href="#"><b>{{ $book->book_title }}</b></a></td>
                 <td>
-                    @if(file_exists( public_path().'/images/books/'.$book->book_image ))
-                        <img src="images/books/{{ $book->book_image }}" class="img-thumbnail w-25">
-                    @else
+                    @if ($book->book_image == null))
                         <img class="img-thumbnail w-25" src="image/library.png">
+                    @else
+                        <img src="images/books/{{ $book->book_image }}" class="img-thumbnail w-25">  
                     @endif
                 </td>
                 <td>{{ $book->quantity }}</td>
                 <td>{{ str_limit($book->book_desc, 40) }}</td>
                 <td>
-                    <form action="{{ route('admin.books.destroy',$book->book_id) }}" method="POST"
+                    <form action="{{ route('admin.books.destroy', $book->book_id) }}" method="POST"
                         class="form-inline">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-sm btn-outline-danger mr-1"><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
-                        <a href="{{ route('admin.books.edit',$book->book_id) }}">
+                        <a href="{{ route('admin.books.edit', $book->book_id) }}">
                             <button type="button" class="btn btn-sm btn-outline-success"><i class="fa fa-pen"
                                     aria-hidden="true"></i></button>
                         </a>
