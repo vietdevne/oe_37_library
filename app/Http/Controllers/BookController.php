@@ -8,6 +8,7 @@ use App\Repositories\RepositoryInterface\BookRepositoryInterface;
 use App\Repositories\RepositoryInterface\CategoryRepositoryInterface;
 use App\Repositories\RepositoryInterface\PublisherRepositoryInterface;
 use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
+use App\Repositories\RepositoryInterface\ReviewRepositoryInterface;
 
 class BookController extends Controller
 {
@@ -15,17 +16,20 @@ class BookController extends Controller
     protected $category;
     protected $publisher;
     protected $author;
+    protected $review;
 
     public function __construct(
         BookRepositoryInterface $book, 
         CategoryRepositoryInterface $category, 
         PublisherRepositoryInterface $publisher, 
-        BaseRepositoryInterface $author
-    ){
+        BaseRepositoryInterface $author,
+        ReviewRepositoryInterface $review
+    ) {
         $this->book = $book;
         $this->category = $category;
         $this->publisher = $publisher;
         $this->author = $author;
+        $this->review = $review;
     }
 
     /**
@@ -77,12 +81,16 @@ class BookController extends Controller
     public function show($id)
     {
         $book = $this->book->find($id);
-        if(!$book)
+        if (!$book) {
             return abort(404);
-        else
+        } else {
             $this->book->viewCounter($id);
-
-        return view('book.detail', compact('book'));
+        }
+        $reviews = $this->review->getWithUser($id);
+        if (is_null($reviews)) {
+            return view('book.detail', compact('book'));         
+        }
+        return view('book.detail', compact('book', 'reviews'));
     }
 
     /**

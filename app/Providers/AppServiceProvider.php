@@ -10,11 +10,13 @@ use App\Repositories\PublisherRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\BookRepository;
+use App\Repositories\ReviewRepository;
 use App\Repositories\RepositoryInterface\UserRepositoryInterface;
 use App\Repositories\RepositoryInterface\CategoryRepositoryInterface;
 use App\Repositories\RepositoryInterface\PublisherRepositoryInterface;
 use App\Repositories\RepositoryInterface\BookRepositoryInterface;
 use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
+use App\Repositories\RepositoryInterface\ReviewRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(BaseRepositoryInterface::class, AuthorRepository::class);
         $this->app->bind(PublisherRepositoryInterface::class, PublisherRepository::class);
+        $this ->app->bind(ReviewRepositoryInterface::class, ReviewRepository::class);
 
         $this->app->singleton(
             UserRepositoryInterface::class,

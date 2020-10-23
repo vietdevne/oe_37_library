@@ -13,10 +13,25 @@ return [
     'favorite_books' => 'Favorite books',
     'random_publishers' => 'Publisher',
     'book' => [
-        'view_book' => 'See details',
-        'borrow_book' => 'Borrow book',
+        'view_book' => 'Detail',
+        'borrow_book' => 'Borrow',
+        'like_book' => 'Like',
+        'review' => 'Review',
+        'review_error' => 'Error',
+        'view' => 'Views',
+        'category' => 'Category',
+        'author' => 'Author',
+        'publisher' => 'Publisher',
+        'rating' => 'Rating',
+        'review_message' => 'Comment',
+        'review_rating' => 'Rating',
+        'choose_rating' => 'Choose rating',
+        'send_review' => 'Send',
+        'notLogin' => 'You must be logged in to rate',
+        
     ],
+    'validate_review' => 'Do not leave comments blank',
     'hello' => 'Hello',
-    'my_account' => 'My account'
+    'my_account' => 'My account',
 
 ];
