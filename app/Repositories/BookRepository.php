@@ -30,7 +30,7 @@ class BookRepository implements BookRepositoryInterface
             }
             $data['book_image'] = $thumb;
             Book::create($data);
-
+            
             return true;
         } catch (Exception $exception) {
             return false;
@@ -65,13 +65,20 @@ class BookRepository implements BookRepositoryInterface
 
     public function delete($id)
     {
-        $user = Book::find($id);
-        if ($user) {
-            $user->delete();
+        $book = Book::find($id);
+        if ($book) {
+            $book->delete();
 
             return true;
         }
 
         return false;
+    }
+
+    public function viewCounter($id){
+        $book = Book::find($id);
+        if($book) {
+            return $book->increment('view');
+        }
     }
 }

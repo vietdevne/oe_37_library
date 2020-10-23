@@ -24,12 +24,13 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6 prod-price mb-2">
-                            <a href="#" class="btn btn-block btn-outline-dark"><i class="fa fa-hourglass-start"
-                                    aria-hidden="true"></i> @lang('main.book.borrow_book')</a>
+                            <a href="{{ route('book.detail', $book->book_id) }}" class="btn btn-block btn-outline-dark">
+                                <i class="fa fa-thumbs-up" aria-hidden="true"></i> @lang('main.book.like_book')
+                            </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-block btn-outline-dark"><i class="fa fa-eye"
-                                    aria-hidden="true"></i> @lang('main.book.view_book')</a>
+                            <a href="{{ route('book.detail', $book->book_id) }}" class="btn btn-block btn-outline-dark">
+                                <i class="fa fa-eye" aria-hidden="true"></i> @lang('main.book.view_book')</a>
                         </div>
                     </div>
                 </div>
