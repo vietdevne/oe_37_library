@@ -51,6 +51,7 @@
                     @if ($book->quantity == 0)
                         <div class="mt-1 text-danger">@lang('main.book.not_enough_quantity')</div>
                     @endif
+                    <div class="mt-1"><b>@lang('main.publishers'):</b> <a href="{{ route('publisher.detail', $book->publisher->pub_id) }}">{{ $book->publisher->pub_name }}</a></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6">
