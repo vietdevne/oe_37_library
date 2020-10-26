@@ -46,7 +46,7 @@
                     </div>
                     <div class="mt-1"><b>@lang('main.book.view'):</b> {{ $book->view }}</div>
                     <div class="mt-1"><b>@lang('main.book.category'):</b> <a href="#">{{ $book->category->cate_name }}</a></div>
-                    <div class="mt-1"><b>@lang('main.book.author'):</b> <a href="#">{{ $book->author->author_name }}</a>
+                    <div class="mt-1"><b>@lang('main.book.author'):</b> <a href="{{ route('authors.detail', $book->author->author_id ) }}">{{ $book->author->author_name }}</a>
                     </div>
                     @if ($book->quantity == 0)
                         <div class="mt-1 text-danger">@lang('main.book.not_enough_quantity')</div>

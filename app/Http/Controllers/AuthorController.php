@@ -13,8 +13,10 @@ use Maatwebsite\Excel\Facades\Excel;
 class AuthorController extends Controller
 {
     protected $authorRepository;
+    protected $book;
 
-    public function __construct(BaseRepositoryInterface $authorRepository){
+    public function __construct(BaseRepositoryInterface $authorRepository) 
+    {
         $this->authorRepository = $authorRepository;
     }
     /**
@@ -65,9 +67,23 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($authorId)
     {
-        //
+        $author = $this->authorRepository->findAuthor($authorId);
+        $books = $this->authorRepository->getBooks($authorId);
+
+        return view('authors.detail', compact('author', 'books'));
+    }
+
+    public function showForUser(Request $request)
+    {
+        $key = $request->input('search');
+        if (!$key) {
+            $authors = $this->authorRepository->getAuthor();
+        } else {
+            $authors = $this->authorRepository->getWithKey($key);
+        }
+        return view('authors.viewAll', compact('authors'));
     }
 
     /**
