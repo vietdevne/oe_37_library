@@ -6,6 +6,8 @@ return [
     'quote_2' => '"Tất cả những gì con người làm, nghĩ hoặc trở thành: được bảo tồn một cách kỳ diệu trên những trang sách.” - Thomas Carlyle',
     'home' => 'Trang chủ',
     'categories' => 'Danh mục',
+    'authors' => 'Tác giả',
+    'publishers' => 'Nhà xuất bản',
     'login' => 'Đăng nhập',
     'locate_vi' => 'Tiếng Việt',
     'locate_en' => 'English',
@@ -45,6 +47,13 @@ return [
         ]
     ],
     'validate_review' => 'Không được để trống bình luận',
+    'author' => [
+        'desc' => 'Thông tin tác giả', 
+        'follow_author' => 'Theo dõi',
+        'unfollow_author' => 'Hủy theo dõi',
+        'books' => 'Sách của ',
+        'search' => 'tìm tác giả theo tên...',
+    ],
     'hello' => 'Xin chào',
     'my_account' => 'Tài khoản của tôi',
     'validate' => [

@@ -42,10 +42,10 @@
         <th scope="row">{{ $author->author_id }}</th>
         <td>{{ $author->author_name }}</td>
         <td>
-          @if ($author->author_avatar == null)
-            <img width="100" height="100" src="image/library.png" alt="">
+          @if(file_exists( public_path().'/images/authors/'.$author->author_image || $author->author_image != null ))
+            <img src="images/authors/{{ $author->author_image }}" class="img-thumbnail p-0 mb-4 border-0 rounded-circle">   
           @else
-            <img width="100" height="100" src="image/{{ $author->author_avatar }}" alt="">
+            <img src="images/authors/author.png" class="img-thumbnail p-0 mb-4 border-0 rounded-circle">
           @endif
         </td>
         <td>{{ $author->author_desc }}</td>

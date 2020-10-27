@@ -6,6 +6,8 @@ return [
     'quote_2' => '"Everything people do, think or become: miraculously preserved on the pages of the book." - Thomas Carlyle',
     'home' => 'Home',
     'categories' => 'Categories',
+    'authors' => 'Authors',
+    'publishers' => 'Publishers',
     'login' => 'Login',
     'locate_vi' => 'Tiếng Việt',
     'locate_en' => 'English',
@@ -38,6 +40,13 @@ return [
             'borrow_success' => 'Submit request to borrow success, check the status of borrow history',
             'borrow_error' => 'Borrow error',
         ]
+    ],
+    'author' => [
+        'desc' => 'Author description', 
+        'follow_author' => 'Follow',
+        'unfollow_author' => 'Unfollow',
+        'books' => 'Books by ',
+        'search' => 'search author with name ...',
     ],
     'validate_review' => 'Do not leave comments blank',
     'hello' => 'Hello',

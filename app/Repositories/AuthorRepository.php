@@ -22,12 +22,17 @@ class AuthorRepository extends BaseRepository implements BaseRepositoryInterface
 
     public function getWithKey($key)
     {
-        return Author::search($key)->paginate(config('app.paginate'));
+        return $this->model->search($key)->paginate(config('app.paginate'));
     }
 
     public function findAuthor($authorId)
     {
-        return Author::find($authorId);
+        return $this->model->findOrFail($authorId);
+    }
+
+    public function getBooks($authorId)
+    {
+        return $this->model->findOrFail($authorId)->books;
     }
     
     public function createAuthor(array $data)
