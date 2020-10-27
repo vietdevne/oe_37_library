@@ -5,6 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Publisher;
+use App\Models\Author;
+use App\Models\Category;
+use App\Models\Borrow;
+use App\Models\Like;
+use App\Models\Review;
 
 class Book extends Model
 {
@@ -26,7 +32,7 @@ class Book extends Model
 
     public function publisher()
     {
-        return $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Publisher::class, 'pub_id');
     }
 
     public function author()

@@ -43,5 +43,5 @@ Route::name('admin.')
     Route::get('authors-export', 'AuthorController@export')->name('authors.export');
     Route::get('users-export', 'UserController@export')->name('users.export');
 });
-
+Route::resource('reviews', 'ReviewController');
 Route::get('book/detail/{id}', 'BookController@show')->name('book.detail');
