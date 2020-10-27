@@ -5,8 +5,13 @@
 
 <div class="input-group mb-3">
     <form action="{{ route('admin.users.index') }}" method="GET" class="form-inline input-group">
-      <input name="search" type="text" class="form-control" placeholder="{{ trans('admin.search.user') }}">
+      <input name="searchName" type="text" class="form-control" placeholder="{{ trans('admin.search.user') }}">
       <div class="input-group-append" id="button-addon4">
+        <select class="form-control" name="searchRole">
+            <option value="">@lang('admin.user.role')</option>
+            <option value="{{ config('app.admin_role') }}">@lang('admin.user.admin_role')</option>
+            <option value="{{ config('app.user_role') }}">@lang('admin.user.user_role')</option>
+        </select>
         <button type="submit" class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
         <a href="{{ route('admin.users.export') }}" class="btn btn-outline-secondary"><i class="fas fa-file-export"></i></a>
       </div>

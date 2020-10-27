@@ -15,12 +15,14 @@ class UserRepository implements UserRepositoryInterface
         return User::find($id);
     }
 
-    public function getWithKey($key)
+    public function getQuerySearch($fullname, $role)
     {
-        return User::search($key)->paginate(config('app.paginate'));
+        return User::query()->fullname($fullname)->role($role)
+            ->paginate(config('app.paginate'));
     }
 
-    public function create($attributes = []){
+    public function create($attributes = []) 
+    {
 
     }
 

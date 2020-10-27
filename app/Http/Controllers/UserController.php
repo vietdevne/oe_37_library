@@ -27,13 +27,14 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $key = $request->input('search');
-        if (!$key) {
-            $users = $this->user->getAll();
-        } else {
-            $users = $this->user->getWithKey($key);
-            $request->session()->put('search', $key);
-        }
+        $request->session()->forget('searchName');
+        $request->session()->forget('searchRole');
+        $fullname = $request->input('searchName');
+        $role = $request->input('searchRole');
+        $users = $this->user->getQuerySearch($fullname, $role);
+        $request->session()->put('searchName', $fullname);
+        $request->session()->put('searchRole', $role);
+        
         return view('user.users', compact('users'));
     }
 
@@ -83,12 +84,13 @@ class UserController extends Controller
 
     public function export(Request $request)
     {
-        if($request->session()->has('search')) {
-            $queryValue = $request->session()->get('search');
+        if ($request->session()->has('searchName') || $request->session()->has('searchRole')) {
+            $nameValue = $request->session()->get('searchName');
+            $roleValue = $request->session()->get('searchRole');
 
-            return (new UserExport($queryValue))->download(Config::get('app.exportUser'));
+            return (new UserExport($nameValue, $roleValue))
+                ->download(Config::get('app.exportUser'));
         }
         return redirect()->back();
-        
     }
 }

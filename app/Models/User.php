@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Follow;
+use App\Models\Borrow;
+use App\Models\Like;
+use App\Models\Review;
 
 class User extends Authenticatable
 {
@@ -51,6 +55,7 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
+
     public function setPasswordAttribute($password) 
     {
         $this->attributes['password'] = bcrypt($password);
@@ -61,10 +66,13 @@ class User extends Authenticatable
         return false; 
     }
 
-    public function scopeSearch($query, $key)
+    public function scopeFullname($query, $fullname)
     {
-
-        return $query->where('fullname', 'LIKE', '%' . $key . '%')
-            ->orWhere('role', 'LIKE', '%' . $key . '%');
+        return $query->where('fullname', 'LIKE', '%' . $fullname . '%');
+    }
+    
+    public function scopeRole($query, $role)
+    {
+        return $query->where('role', 'LIKE', '%' . $role . '%');
     }
 }
