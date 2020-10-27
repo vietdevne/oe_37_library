@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Borrow;
 use App\Models\Like;
 use App\Models\Review;
+use Auth;
 
 class Book extends Model
 {
@@ -57,7 +58,7 @@ class Book extends Model
 
     public function liked()
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany(Like::class, 'book_id')->where('likes.user_id', '=', Auth::id());
     }
 
     public function reviews()
