@@ -41,6 +41,10 @@ return [
             'borrow_error' => 'Borrow error',
         ]
     ],
+    'publisher' => [
+        'books' => 'Book of ',
+        'search' => 'Search publisher with name ...',
+    ],
     'author' => [
         'desc' => 'Author description', 
         'follow_author' => 'Follow',

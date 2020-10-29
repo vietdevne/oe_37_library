@@ -20,6 +20,11 @@ class PublisherRepository extends BaseRepository implements PublisherRepositoryI
         return $this->model->all();
     }
 
+    public function getRandomPublisher()
+    {
+        return $this->model->inRandomOrder()->limit(config('app.random'))->get();
+    }
+
     public function getPublisher()
     {
         return $this->model->orderBy('pub_id', 'DESC')->paginate(Config::get('app.paginatePublisher'));
@@ -27,12 +32,17 @@ class PublisherRepository extends BaseRepository implements PublisherRepositoryI
 
     public function getWithKey($key)
     {
-        return Publisher::search($key)->paginate(config('app.paginate'));
+        return $this->model->search($key)->paginate(config('app.paginate'));
     }
 
     public function findPublisher($pubId)
     {
-        return Publisher::find($pubId);
+        return $this->model->findOrFail($pubId);
+    }
+
+    public function getBook($pubId)
+    {
+        return $this->model->findOrFail($pubId)->books;
     }
 
     public function createPublisher(array $data)

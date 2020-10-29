@@ -54,6 +54,10 @@ return [
         'books' => 'Sách của ',
         'search' => 'tìm tác giả theo tên...',
     ],
+    'publisher' => [
+        'books' => 'Sách sản xuất bởi ',
+        'search' => 'Tìm nhà xuất bản theo tên ...',
+    ],
     'hello' => 'Xin chào',
     'my_account' => 'Tài khoản của tôi',
     'validate' => [

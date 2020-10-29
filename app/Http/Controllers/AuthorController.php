@@ -18,6 +18,7 @@ class AuthorController extends Controller
     public function __construct(BaseRepositoryInterface $authorRepository) 
     {
         $this->authorRepository = $authorRepository;
+        // $this->book = $book;
     }
     /**
      * Display a listing of the resource.

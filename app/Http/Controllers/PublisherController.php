@@ -66,11 +66,24 @@ class PublisherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($pubId)
     {
-        //
+        $publisher = $this->publisherRepository->findPublisher($pubId);
+        $books = $this->publisherRepository->getBook($pubId);
+
+        return view('publishers.detail', compact('publisher', 'books'));
     }
 
+    public function showAll(Request $request) 
+    {
+        $key = $request->input('search');
+        if (!$key) {
+            $publishers = $this->publisherRepository->getPublisher();
+        }
+        $publishers = $this->publisherRepository->getWithKey($key);
+
+        return view('publishers.viewAll', compact('publishers'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

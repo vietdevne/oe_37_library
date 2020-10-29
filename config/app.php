@@ -129,6 +129,8 @@ return [
 
     'lastest' => 4,
 
+    'random' => 3,
+
     /*
     rating
     */

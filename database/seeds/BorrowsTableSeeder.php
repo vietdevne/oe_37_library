@@ -18,9 +18,8 @@ class BorrowsTableSeeder extends Seeder
                 'user_id' => $faker->numberBetween($min = 1, $max = 10),
                 'book_id' => $faker->numberBetween($min = 1, $max = 10),
                 'borr_status' => $faker->numberBetween($min = 0, $max = 1),
-                'borr_from_date' => $faker->dateTime($max = 'now', $timezone = null),
-                'borr_to_date' => $faker->dateTime($max = 'now', $timezone = null),
-                'borr_return_date' => $faker->dateTime($max = 'now', $timezone = null),
+                'borrow_date' => $faker->dateTime($max = 'now', $timezone = null),
+                'return_date' => $faker->dateTime($max = 'now', $timezone = null),
             ]);
         }
     }

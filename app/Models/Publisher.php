@@ -21,7 +21,7 @@ class Publisher extends Model
 
     public function books()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Book::class, 'pub_id');
     }
 
     public function scopeSearch($query, $key)

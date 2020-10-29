@@ -219,36 +219,17 @@
     <!-- Three columns of text below the carousel -->
     <h2 class="heading">@lang('main.random_publishers')</h2>
     <div class="row author">
+        @foreach($random as $publisher)
         <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
-                    dy=".3em">140x140</text>
-            </svg>
-            <h2 class="mt-2"><a href="#">Name</a></h2>
-            <p>Description</p>
+            @if ($publisher->pub_logo == null)
+                <img class="img-thumbnail rounded-circle" src="images/publishers/pub.png" alt="">
+            @else
+                <img class="img-thumbnail rounded-cicle" src="images/publishers/{{ $publisher->pub_logo }}" alt="">
+            @endif
+            <h2 class="mt-2"><a href="{{ route('publisher.detail', $publisher->pub_id) }}">{{ $publisher->pub_name }}</a></h2>
+            <p>{{ str_limit($publisher->pub_desc, 120) }}</p>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
-                    dy=".3em">140x140</text>
-            </svg>
-            <h2 class="mt-2"><a>Name</a></h2>
-            <p>Description</p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
-                    dy=".3em">140x140</text>
-            </svg>
-            <h2 class="mt-2"><a>Name</a></h2>
-            <p>Description</p>
-        </div><!-- /.col-lg-4 -->
+        @endforeach
     </div>
     <hr class="featurette-divider">
 </div>
