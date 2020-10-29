@@ -15,6 +15,11 @@ class BookRepository implements BookRepositoryInterface
         return Book::lastest()->limit(config('app.lastest'))->get();
     }
 
+    public function getFavouriteBook()
+    {
+        return Book::withCount('likes')->orderBy('likes_count', 'desc')->limit(config('app.lastest'))->get();
+    }
+
     public function find($id)
     {
         return Book::find($id);

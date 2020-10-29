@@ -52,6 +52,11 @@ class Book extends Model
 
     public function likes()
     {
+        return $this->hasMany(Like::class, 'book_id');
+    }
+
+    public function liked()
+    {
         return $this->hasMany(Like::class);
     }
 
@@ -63,6 +68,6 @@ class Book extends Model
     public function scopeLastest($query)
     {
         return $query->orderBy('created_at', 'desc');
-    }
+    }   
     
 }
