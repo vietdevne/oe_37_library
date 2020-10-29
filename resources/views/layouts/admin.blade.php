@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ route('admin.borrows.index') }}">
                 @lang('admin.borrows')
               </a>
             </li>

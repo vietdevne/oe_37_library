@@ -31,6 +31,8 @@ Route::name('admin.')
         'publishers' => 'PublisherController',
         'books' => 'BookController',
         'reviews' => 'ReviewController',
+        'borrows' => 'BorrowController',
+        
     ]);
     
     Route::resource('categories', 'CategoryController', ['except' => [
@@ -51,3 +53,4 @@ Route::get('authors', 'AuthorController@showForUser')->name('authors.showAll');
 Route::get('publisher/detail/{id}', 'PublisherController@show')
     ->name('publisher.detail');
 Route::get('publishers', 'PublisherController@showAll')->name('publishers.showAll');
+Route::get('history/{id}', 'BorrowController@history')->name('borrows.history');
