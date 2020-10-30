@@ -36,8 +36,8 @@ class HomeController extends Controller
     public function index()
     {
         $lastest = $this->book->getLastestBook();
-        $random = $this->publisher->getRandomPublisher();
-
-        return view('home', compact('lastest', 'random'));
+        $publishers = $this->publisher->getRandomPublisher();
+        $favourite = $this->book->getFavouriteBook();
+        return view('home', compact('lastest', 'favourite', 'publishers'));
     }
 }

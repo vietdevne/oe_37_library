@@ -108,19 +108,21 @@
             @foreach($reviews as $review)
             <div class="card mb-3 p-2">
                 <div class=" row no-gutters">
-                    <div class="col-md-1">
+                    <div class="col-md-1 p-2">
                         @if ($review->user->avatar == null)
-                        <img src="images/users/user.jpg" class="rounded-circle img-thumbnail" alt="">
+                            <img src="image/default_avatar.jpg" class="rounded-circle img-thumbnail" alt="">
                         @else 
-                            <img src="images/users/{{ $review->user->avatar }}" class="w-25 rounded-circle img-thumbnail" alt="">
+                            <img src="images/users/{{ $review->user->avatar }}" class="rounded-circle img-thumbnail" alt="">
                         @endif
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-11">
                       <div class="card-body">
-                        <h5 class="card-title"><b>{{ $review->user->fullname }}</b></h5>
-                        <p class="card-text text-warning">{{ config('app.rating.' . $review->rate) }}</p>
-                        <p class="card-text">{{ $review->content }}</p>
-                        <p class="card-text">{{ $review->updated_at }}</small></p>
+                        <h5 class="card-title mb-1"><b>{{ $review->user->fullname }}</b></h5>
+                        <div class="card-text">
+                            <div class="text-warning">{{ config('app.rating.' . $review->rate) }}</div>
+                            <div class="mt-2">{{ $review->content }}</div>
+                        </div>
+                        <p class="card-text text-muted float-right"><small>{{ $review->updated_at }}</small></p>
                       </div>
                     </div>
                 </div>
