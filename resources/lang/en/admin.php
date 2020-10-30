@@ -126,5 +126,14 @@ return [
         'author' => 'search author with name, description, updated day,...',
         'user' => 'search user with name...',
         'category' => 'search category with name...',
+        'reveiew' => 'search user or book name ...',
+    ],
+    'review_table' => [
+        'id' => 'ID',
+        'user_col' => 'Name of user',
+        'book_col' => 'Name of book',
+        'content_col' => 'Comments',
+        'rate_col' => 'Rating',
+        'date_col' => 'Time',
     ],
 ];

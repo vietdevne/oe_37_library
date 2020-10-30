@@ -127,5 +127,14 @@ return [
         'author' => 'tìm tác giả theo tên, thông tin, ngày tạo,...',
         'user' => 'tìm người dùng theo tên...',
         'category' => 'tìm danh mục theo tên ...',
+        'review' => 'Tìm kiếm người dùng hoặc sách ...',
+    ],
+    'review_table' => [
+        'id' => 'ID',
+        'user_col' => 'Tên người dùng',
+        'book_col' => 'Tên sách',
+        'content_col' => 'Bình luận',
+        'rate_col' => 'Đánh giá',
+        'date_col' => 'Thời gian',
     ],
 ];

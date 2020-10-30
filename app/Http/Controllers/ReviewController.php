@@ -20,9 +20,16 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->input('search');
+        $rate = $request->input('searchRate');
+        if ($request->has('search') || $request->has('searchRate')) {
+            $reviews = $this->reviewRepository->searchReview($search, $rate);
+        } else {
+            $reviews = $this->reviewRepository->getAll();
+        }
+        return view('reviews.view', compact('reviews'));
     }
 
     /**
@@ -91,6 +98,8 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->reviewRepository->delete($id);
+
+        return redirect()->route('admin.reviews.index');
     }
 }
