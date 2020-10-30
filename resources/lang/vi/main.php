@@ -58,6 +58,9 @@ return [
         'unfollow_author' => 'Hủy theo dõi',
         'books' => 'Sách của ',
         'search' => 'tìm tác giả theo tên...',
+        'not_exist' => 'Tác giả này không tồn tại',
+        'like_success' => 'Đã theo dõi',
+        'unlike_success' => 'Đã hủy theo dõi',
     ],
     'publisher' => [
         'books' => 'Sách sản xuất bởi ',

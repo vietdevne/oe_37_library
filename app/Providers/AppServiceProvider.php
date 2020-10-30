@@ -13,6 +13,7 @@ use App\Repositories\BookRepository;
 use App\Repositories\ReviewRepository;
 use App\Repositories\BorrowRepository;
 use App\Repositories\LikeRepository;
+use App\Repositories\FollowRepository;
 use App\Repositories\RepositoryInterface\UserRepositoryInterface;
 use App\Repositories\RepositoryInterface\CategoryRepositoryInterface;
 use App\Repositories\RepositoryInterface\PublisherRepositoryInterface;
@@ -21,6 +22,7 @@ use App\Repositories\RepositoryInterface\BorrowRepositoryInterface;
 use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
 use App\Repositories\RepositoryInterface\ReviewRepositoryInterface;
 use App\Repositories\RepositoryInterface\LikeRepositoryInterface;
+use App\Repositories\RepositoryInterface\FollowRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BaseRepositoryInterface::class, AuthorRepository::class);
         $this->app->bind(PublisherRepositoryInterface::class, PublisherRepository::class);
         $this ->app->bind(ReviewRepositoryInterface::class, ReviewRepository::class);
+        $this ->app->bind(FollowRepositoryInterface::class, FollowRepository::class);
 
         $this->app->singleton(
             UserRepositoryInterface::class,

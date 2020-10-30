@@ -36,13 +36,8 @@
                     </h5>
                     <p class="pl-3 pr-3"><i>{{ str_limit($author->author_desc, 120) }}</i></p>
                 </div>
-                <div class="row p-4">
-                    <div class="col-md-6 prod-price mb-2">
-                        <a href="#" class="btn btn-block btn-outline-dark">
-                            <i class="fas fa-bell" aria-hidden="true"></i> @lang('main.author.follow_author')
-                        </a>
-                    </div>
-                    <div class="col-md-6">
+                <div class="row p-4 justify-content-center">
+                    <div class="col-md-6 text-center ">
                         <a href="{{ route('authors.detail', $author->author_id ) }}"
                             class="btn btn-block btn-outline-dark">
                             <i class="fa fa-eye" aria-hidden="true"></i> @lang('main.book.view_book')</a>

@@ -7,18 +7,23 @@ use Illuminate\Http\Request;
 use App\Models\Author;
 use Illuminate\Support\Facades\Config;
 use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
+use App\Repositories\RepositoryInterface\FollowRepositoryInterface;
 use App\Exports\AuthorExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Auth;
 
 class AuthorController extends Controller
 {
     protected $authorRepository;
     protected $book;
+    protected $follow;
 
-    public function __construct(BaseRepositoryInterface $authorRepository) 
-    {
+    public function __construct(
+        BaseRepositoryInterface $authorRepository,
+        FollowRepositoryInterface $follow
+    ) {
         $this->authorRepository = $authorRepository;
-        // $this->book = $book;
+        $this->follow = $follow;
     }
     /**
      * Display a listing of the resource.
@@ -72,7 +77,11 @@ class AuthorController extends Controller
     {
         $author = $this->authorRepository->findAuthor($authorId);
         $books = $this->authorRepository->getBooks($authorId);
-
+        if (Auth::check()) {
+            $followed = $this->follow->findExist(Auth::user()->user_id, $authorId);
+            return view('authors.detail', compact('author', 'books', 'followed'));
+        }
+        
         return view('authors.detail', compact('author', 'books'));
     }
 
@@ -84,7 +93,7 @@ class AuthorController extends Controller
         } else {
             $authors = $this->authorRepository->getWithKey($key);
         }
-        return view('authors.viewAll', compact('authors'));
+        return view('authors.viewAll', compact('authors', 'followed'));
     }
 
     /**
@@ -141,5 +150,24 @@ class AuthorController extends Controller
             return (new AuthorExport($queryValue))->download(Config::get('app.exportAuthor'));
         }
         return redirect()->back(); 
+    }
+
+    public function follow(Request $request)
+    {
+        $author_id = $request->input('author_id');
+        $user_id = $request->input('user_id');
+        $author = $this->authorRepository->find($author_id);
+        if ($author) {
+            if (!$this->follow->findExist($user_id, $author_id)) { 
+                $this->follow->create([
+                    'author_id' => $author_id,
+                    'user_id' => $user_id,
+                ]);
+            }else{
+                $this->follow->unFollow($user_id, $author_id);
+            }
+        }
+
+        return redirect()->back();
     }
 }
