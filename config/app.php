@@ -17,6 +17,7 @@ return [
     'exportPublisher' => 'publishers.xlsx',
     'exportAuthor' => 'authors.xlsx',
     'exportUser' => 'users.xlsx',
+    'exportBook' => 'books.xlsx',
     
     /*
     |--------------------------------------------------------------------------

@@ -6,6 +6,26 @@
     <div><a href="{{ route('admin.books.create') }}"><button class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
             @lang('admin.book.create')</button></a></div>
 </div>
+
+<div class="input-group mb-3">
+    <form action="{{ route('admin.books.index') }}" method="GET" class="form-inline input-group">
+      <input name="searchName" type="text" class="form-control" placeholder="{{ trans('admin.search.book') }}">
+      <div class="input-group-append" id="button-addon4">
+        <select class="form-control" name="searchCategory">
+            <option value="">@lang('admin.book.category')</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->cate_id }}">{{ $category->cate_name }}</option>
+                @foreach ($category->children as $subCategory)
+                    <option value="{{ $subCategory->cate_id }}">― {{ $subCategory->cate_name }}</option>
+                @endforeach
+            @endforeach
+        </select>
+        <button type="submit" class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+        <a href="{{ route('admin.books.export') }}" class="btn btn-outline-secondary"><i class="fas fa-file-export"></i></a>
+      </div>
+    </form>
+</div>
+
 @if (session('message'))
 <div class="alert alert-{{ session('message.status') }} mb-4">
     {{ session('message.msg') }}
@@ -25,9 +45,9 @@
         <tbody>
             @foreach ($books as $book)
             <tr>
-                <td><a href="#"><b>{{ $book->book_title }}</b></a></td>
+                <td><a href="{{ route('book.detail', $book->book_id) }}"><b>{{ $book->book_title }}</b></a></td>
                 <td>
-                    @if ($book->book_image == null))
+                    @if ($book->book_image == null)
                         <img class="img-thumbnail w-25" src="image/library.png">
                     @else
                         <img src="images/books/{{ $book->book_image }}" class="img-thumbnail w-25">  

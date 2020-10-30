@@ -13,6 +13,9 @@ use App\Repositories\RepositoryInterface\BorrowRepositoryInterface;
 use App\Repositories\RepositoryInterface\ReviewRepositoryInterface;
 use App\Repositories\RepositoryInterface\LikeRepositoryInterface;
 use Auth;
+use Illuminate\Support\Facades\Config;
+use App\Exports\BookExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BookController extends Controller
 {
@@ -47,11 +50,18 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = $this->book->getAll();
+        $request->session()->forget('searchName');
+        $request->session()->forget('searchCategory');
+        $title = $request->input('searchName');
+        $cate = $request->input('searchCategory');
+        $categories = $this->category->getAll();
+        $books = $this->book->getQuerySearch($title, $cate);
+        $request->session()->put('searchName', $title);
+        $request->session()->put('searchCategory', $cate);
 
-        return view('book.books', compact('books'));        
+        return view('book.books', compact('books', 'categories'));        
     }
 
     /**
@@ -63,7 +73,7 @@ class BookController extends Controller
     {
         $categories = $this->category->getAllNoPagination();
         $publishers = $this->publisher->getAllPublisher();
-        $authors = $this->author->getAllAuthor();
+        $authors = $this->author->getAuthor();
 
         return view('book.create', compact('categories', 'publishers', 'authors'));
     }
@@ -197,5 +207,16 @@ class BookController extends Controller
                 'msg' => trans('main.book.not_exist'),
                 'status' => 'error',
             ]);        
+    }
+    public function export(Request $request)
+    {
+        if ($request->session()->has('searchName') || $request->session()->has('searchCategory')) {
+            $title = $request->session()->get('searchName');
+            $cate = $request->session()->get('searchCategory');
+
+            return (new BookExport($title, $cate))
+                ->download(Config::get('app.exportBook'));
+        }
+        return redirect()->back();
     }
 }

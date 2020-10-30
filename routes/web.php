@@ -42,6 +42,7 @@ Route::name('admin.')
     Route::get('publishers-export', 'PublisherController@export')->name('publishers.export');
     Route::get('authors-export', 'AuthorController@export')->name('authors.export');
     Route::get('users-export', 'UserController@export')->name('users.export');
+    Route::get('books-export', 'BookController@export')->name('books.export');
 });
 Route::post('reviews', 'ReviewController@store')->name('reviews.store');
 Route::get('book/detail/{id}', 'BookController@show')->name('book.detail');

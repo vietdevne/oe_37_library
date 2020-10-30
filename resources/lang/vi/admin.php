@@ -136,5 +136,6 @@ return [
         'content_col' => 'Bình luận',
         'rate_col' => 'Đánh giá',
         'date_col' => 'Thời gian',
+        'book' => 'Tìm sách theo tên ...',
     ],
 ];

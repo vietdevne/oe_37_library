@@ -69,6 +69,17 @@ class Book extends Model
     public function scopeLastest($query)
     {
         return $query->orderBy('created_at', 'desc');
-    }   
+    }
+
+    public function scopeTitle($query, $name)
+    {
+        return $query->where('book_title', 'LIKE', '%' . $name . '%');
+    }
+
+    public function scopeCate($query, $cate)
+    {
+        return $query->where('cate_id', 'LIKE', '%' . $cate . '%')
+            ->with('category');
+    }
     
 }

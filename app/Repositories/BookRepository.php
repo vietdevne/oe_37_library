@@ -25,6 +25,11 @@ class BookRepository implements BookRepositoryInterface
         return Book::find($id);
     }
 
+    public function getQuerySearch($title, $cate)
+    {
+        return Book::query()->title($title)->cate($cate)
+            ->paginate(config('app.paginate'));
+    }
     public function create($data = []){
         $thumb = '';
         try {
