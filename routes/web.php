@@ -30,7 +30,7 @@ Route::name('admin.')
         'authors' => 'AuthorController',
         'publishers' => 'PublisherController',
         'books' => 'BookController',
-        
+        'reviews' => 'ReviewController',
     ]);
     
     Route::resource('categories', 'CategoryController', ['except' => [
@@ -43,7 +43,7 @@ Route::name('admin.')
     Route::get('authors-export', 'AuthorController@export')->name('authors.export');
     Route::get('users-export', 'UserController@export')->name('users.export');
 });
-Route::resource('reviews', 'ReviewController');
+Route::post('reviews', 'ReviewController@store')->name('reviews.store');
 Route::get('book/detail/{id}', 'BookController@show')->name('book.detail');
 Route::post('book/borrow/{id}', 'BookController@borrow')->name('book.borrow')->middleware('auth');
 Route::get('author/detail/{id}', 'AuthorController@show')->name('authors.detail');

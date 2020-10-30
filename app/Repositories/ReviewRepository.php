@@ -12,13 +12,15 @@ class ReviewRepository extends BaseRepository implements ReviewRepositoryInterfa
 
     public function getAll()
     {
-        return $this->model->all();
+        return $this->model->latest()->with(['user', 'book'])->paginate(config('app.paginate'));
     }
 
-    public function getWithKey($key)
+    public function searchReview($search, $rate)
     {
-        return $this->model->search($key)->paginate(config('app.paginate'));
+        return $this->model->query()->name($search)
+            ->rate($rate)->paginate(config('app.paginate'));
     }
+
 
     public function find($id)
     {
@@ -48,12 +50,8 @@ class ReviewRepository extends BaseRepository implements ReviewRepositoryInterfa
 
     public function delete($id)
     {
-        $re = $this->model->find($id);
-        if($re){
-            $re->delete();
-
-            return true;
-        }
-        return false;
+        $re = $this->model->findOrFail($id);
+        
+        return $re->delete();
     }
 }
