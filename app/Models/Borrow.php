@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\User;
+use App\Models\Book;
 
 class Borrow extends Model
 {
@@ -18,6 +20,7 @@ class Borrow extends Model
         'borr_status',
         'borrow_date',
         'return_date',
+        'note',
     ];
 
     public function user()
@@ -28,5 +31,16 @@ class Borrow extends Model
     public function book()
     {
         return $this->belongsTo(Book::class, 'book_id');
+    }
+
+    public function scopeFullname($query, $fullname)
+    {
+        return $query->where('users.fullname', 'LIKE', '%' . $fullname . '%')
+            ->join('users', 'borrows.user_id', '=', 'users.user_id');
+    }
+
+    public function scopeStatus($query, $status)
+    {
+        return $query->where('borr_status', 'LIKE', '%' . $status . '%');
     }
 }

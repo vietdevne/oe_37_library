@@ -65,5 +65,6 @@ return [
         'return_date_required' => 'Please select a return date',
         'borrow_date_after' => 'The date of borrowing must be today',
         'return_date_after' => 'The return date must be after the date the book is borrowed'
-    ]
+    ],
+    'borrow_history' => 'Borrow history',
 ];

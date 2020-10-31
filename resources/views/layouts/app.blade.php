@@ -57,6 +57,7 @@
                 <a class="dropdown-item" href="#">@lang('main.my_account')</a>
                 @if(Auth::user()->can('accessAdmin', 1)) <a class="dropdown-item text-danger"
                   href="{{ route('admin.index') }}">@lang('admin.home')</a> @endif
+                  <a class="dropdown-item" href="{{ route('borrows.history', Auth::user()->user_id) }}">@lang('main.borrow_history')</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" id="logout">@lang('auth.logout')</a>
               </div>

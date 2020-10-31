@@ -70,5 +70,6 @@ return [
         'return_date_required' => 'Hãy chọn ngày trả lại sách',
         'borrow_date_after' => 'Ngày mượn sách phải là hôm nay',
         'return_date_after' => 'Ngày trả sách phải sau ngày mượn sách'
-    ]
+    ],
+    'borrow_history' => 'Lịch sử mượn',
 ];
