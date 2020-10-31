@@ -8,4 +8,5 @@ interface BookRepositoryInterface extends BaseRepositoryInterface
     public function getFavouriteBook();
 
     public function viewCounter($id);
+    public function getQuerySearch($title, $cate);
 }

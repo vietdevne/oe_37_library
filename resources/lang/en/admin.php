@@ -136,6 +136,7 @@ return [
         'content_col' => 'Comments',
         'rate_col' => 'Rating',
         'date_col' => 'Time',
+        'book' => 'search book with name ...',
     ],
     'borrow_table' => [
         'title_table' => 'Manage borrow book',
