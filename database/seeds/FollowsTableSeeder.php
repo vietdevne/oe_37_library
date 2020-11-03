@@ -17,6 +17,7 @@ class FollowsTableSeeder extends Seeder
             Follow::create([
                 'user_id' => $faker->numberBetween($min = 1, $max = 10),
                 'follow_id' => $faker->numberBetween($min = 1, $max = 10),
+                'author_id' => $faker->numberBetween($min = 1, $max = 10),
             ]);
         }
     }

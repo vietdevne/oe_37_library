@@ -24,6 +24,11 @@ class Author extends Model
         return $this->hasMany(Book::class, 'author_id');
     }
 
+    public function follows()
+    {
+        return $this->hasMany(Follow::class, 'author_id');
+    }
+
     public function scopeSearch($query, $key)
     {
         return $query->where('author_name', 'LIKE', '%' . $key . '%') 

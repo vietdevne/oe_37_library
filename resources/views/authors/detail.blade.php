@@ -18,9 +18,22 @@
         <h1 class="mt-4">{{ $author->author_name }}</h1>
         <p class="text-muted">{!! nl2br(e($author->author_desc)) !!}</p>
         <div class="">
-            <a href="#" class="btn btn-outline-dark">
-                <i class="fas fa-bell" aria-hidden="true"></i> @lang('main.author.follow_author')
-            </a>
+            @if (Auth::check())
+            <form action="{{ route('author.follow') }}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="author_id" value="{{ $author->author_id }}">
+                <input type="hidden" name="user_id" value="{{ Auth::user()->user_id }}">
+                <button class="btn btn-outline-dark">
+                    @if(!$followed)
+                        <i class="fas fa-bell" aria-hidden="true"></i> @lang('main.author.follow_author')
+                    @else
+                        <i class="fas fa-bell-slash" aria-hidden="true"></i> @lang('main.author.unfollow_author')
+                    @endif
+                </button>
+            </form>
+            @else 
+                <button class="btn btn-outline-dark"><i class="fas fa-bell" aria-hidden="true"></i> @lang('auth.login')</button>
+            @endif
         </div>
     </div> 
     @if(count($books) > 0)

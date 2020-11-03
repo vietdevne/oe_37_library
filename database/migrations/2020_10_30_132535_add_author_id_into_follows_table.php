@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFollowsTable extends Migration
+class AddAuthorIdIntoFollowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateFollowsTable extends Migration
      */
     public function up()
     {
-        Schema::enableForeignKeyConstraints();
-        Schema::create('follows', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('follow_id')->nullable();
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->timestamps();
-            $table->softDeletes();
-        });
         Schema::disableForeignKeyConstraints();
+        Schema::table('follows', function (Blueprint $table) {
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->foreign('author_id')->references('author_id')->on('authors');
+        });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -32,7 +29,9 @@ class CreateFollowsTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('follows');
+        Schema::table('follows', function (Blueprint $table) {
+            $table->dropColumn('author_id');
+        });
         Schema::enableForeignKeyConstraints();
     }
 }
