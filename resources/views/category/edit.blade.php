@@ -26,7 +26,6 @@
             @endif
         </div>
     </div>
-    @if($category->parent_id != null)
     <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }}">
         <label for="parent_id" class="col-md-4 control-label">@lang('admin.category.parent')</label>
         <div class="col-md-12">
@@ -45,7 +44,6 @@
             @endif
         </div>
     </div>
-    @endif
     <div class="form-group{{ $errors->has('cate_desc') ? ' has-error' : '' }}">
         <label for="cate_desc" class="col-md-4 control-label">@lang('admin.category.description')</label>
         <div class="col-md-12">
