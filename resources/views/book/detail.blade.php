@@ -37,7 +37,7 @@
                 <div class="card-text">
                     <b>@lang('main.book.rating'): </b>
                     <div class="star-ratings d-inline-block">
-                        <div class="fill-ratings" style="width: 85%;">
+                        <div class="fill-ratings" style="width: {{ optional($book->agvReview->first())->star * 20 }}%;">
                             <span>★★★★★</span>
                         </div>
                         <div class="empty-ratings">

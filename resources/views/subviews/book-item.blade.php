@@ -14,7 +14,7 @@
                     <p class="card-text">{{ str_limit($book->book_desc, 120) }}</p>
                     <div class="card-text">
                         <div class="star-ratings d-inline-block">
-                            <div class="fill-ratings" style="width: 85%;">
+                            <div class="fill-ratings" style="width: {{ optional($book->agvReview->first())->star * 20 }}%;">
                                 <span>★★★★★</span>
                             </div>
                             <div class="empty-ratings">

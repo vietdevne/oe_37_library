@@ -63,7 +63,13 @@ class Book extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class, 'book_id');
+    }
+
+    public function agvReview(){
+        return $this->reviews()
+                    ->selectRaw('avg(rate) as star, book_id')
+                    ->groupBy('book_id');
     }
 
     public function scopeLastest($query)
