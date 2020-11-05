@@ -8,4 +8,6 @@ interface CategoryRepositoryInterface extends BaseRepositoryInterface
     public function getParent();
 
     public function getWithKey($key);
+
+    public function getLastestBookInCategory($cat_id);
 }
