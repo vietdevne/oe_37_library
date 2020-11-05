@@ -55,4 +55,16 @@ class CategoryRepository implements CategoryRepositoryInterface
         }
         return false;
     }
+
+    public function getLastestBookInCategory($cat_id)
+    {
+        $data = Category::find($cat_id)->books()->orWhereIn('cate_id', function ($query) use ($cat_id) {
+            $query->select('cate_id')
+                ->from('categories')
+                ->where('cate_id', '=', $cat_id)
+            ->orWhere('parent_id', '=', $cat_id);
+        })->paginate(config('app.paginate'));
+
+        return $data;
+    }
 }
