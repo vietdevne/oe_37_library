@@ -23,6 +23,9 @@ class BorrowController extends Controller
      */
     public function index(Request $request)
     {
+        $now = Carbon::now();
+        $borrowing = BorrowStatus::borrowing;
+        $paid = BorrowStatus::paid;
         $fullname = $request->input('fullname');
         $status = $request->input('status');
         if ($request->has('fullname') || $request->has('status')) {
@@ -30,7 +33,12 @@ class BorrowController extends Controller
         } else {
             $borrows = $this->borrow->getAll();
         }
-        return view('borrows.view', compact('borrows'));
+        return view('borrows.view', compact(
+            'borrows', 
+            'now',
+            'borrowing',
+            'paid'
+        ));
     }
 
     /**
@@ -85,13 +93,10 @@ class BorrowController extends Controller
      */
     public function update($id, Request $request)
     {
-        $status = $request->input('borr_status');
-        $attributes = ['borr_status' => $status];
-        $returnDate = $this->borrow->getBookId($id);
-        $attributes = $this->borrow->checkBorrowStatus($id, $status);
+        $attributes = ['borr_status' => $request->input('borr_status')];
         $this->borrow->update($id, $attributes);
 
-        return redirect()->route('admin.borrows.index');
+        return redirect()->back();
     }
 
     /**
