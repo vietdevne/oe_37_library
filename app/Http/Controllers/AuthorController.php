@@ -93,7 +93,7 @@ class AuthorController extends Controller
         } else {
             $authors = $this->authorRepository->getWithKey($key);
         }
-        return view('authors.viewAll', compact('authors', 'followed'));
+        return view('authors.viewAll', compact('authors'));
     }
 
     /**

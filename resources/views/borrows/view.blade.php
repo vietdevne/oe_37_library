@@ -66,7 +66,11 @@
             </form>
         </td>
         <td>
-            {{ $borrow->note }}
+          @if (strtotime($now) > strtotime($borrow->return_date) && $borrow->borr_status == $borrowing)
+            <i class="badge badge-danger text-light">@lang('admin.borrow_table.overdue')</i>
+          @elseif (strtotime($now) > strtotime($borrow->return_date) && $borrow->borr_status == $paid)
+          <i class="badge badge-warning text-dark">@lang('admin.borrow_table.delay') {{$now->diffInDays($borrow->return_date) }}</i>
+          @endif
         </td>
         <td>
           <form action="{{ route('admin.borrows.destroy', $borrow->borr_id) }}" method="post">
