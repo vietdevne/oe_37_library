@@ -5,12 +5,12 @@ namespace Tests\Unit\Models;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Models\Author;
+use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class AuthorTest extends TestCase
+class PublisherTest extends TestCase
 {
-    protected $author;
+    protected $publisher;
     /**
      * A basic unit test example.
      *
@@ -24,48 +24,42 @@ class AuthorTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->author = new Author();
+        $this->publisher = new publisher();
     }
 
     protected function tearDown(): void
     {
         parent::tearDown();
-        unset($this->author);
+        unset($this->publisher);
     }
 
     public function test_table_name()
     {
-        $this->assertEquals('authors', $this->author->getTable());
+        $this->assertEquals('publishers', $this->publisher->getTable());
     }
 
     public function test_key_name()
     {
-        $this->assertEquals('author_id', $this->author->getKeyName());
+        $this->assertEquals('pub_id', $this->publisher->getKeyName());
     }
 
     public function test_fillable()
     {
         $this->assertEquals(
             [
-                'author_name', 
-                'author_avatar',
-                'author_desc'
+                'pub_name', 
+                'pub_logo',
+                'pub_desc'
             ],
-            $this->author->getFillable()
+            $this->publisher->getFillable()
         );
     }
 
     public function test_books_relation()
     {
-        $relation = $this->author->books();
+        $relation = $this->publisher->books();
         $this->assertInstanceOf(HasMany::class, $relation);
-        $this->assertEquals('author_id', $relation->getForeignKeyName());
+        $this->assertEquals('pub_id', $relation->getForeignKeyName());
     }
 
-    public function test_follows_relation()
-    {
-        $relation = $this->author->follows();
-        $this->assertInstanceOf(HasMany::class, $relation);
-        $this->assertEquals('author_id', $relation->getForeignKeyName());
-    }
 }
