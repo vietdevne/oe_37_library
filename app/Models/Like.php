@@ -19,11 +19,11 @@ class Like extends Model
 
     public function Book()
     {
-        return $this->belongsTo(Book::class);
+        return $this->belongsTo(Book::class, 'book_id');
     }
 
     public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
