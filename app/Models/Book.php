@@ -48,7 +48,7 @@ class Book extends Model
 
     public function borrows()
     {
-        return $this->hasMany(Borrow::class);
+        return $this->hasMany(Borrow::class, 'book_id');
     }
 
     public function likes()
@@ -56,9 +56,11 @@ class Book extends Model
         return $this->hasMany(Like::class, 'book_id');
     }
 
-    public function liked()
+    public function liked($uid = null)
     {
-        return $this->hasMany(Like::class, 'book_id')->where('likes.user_id', '=', Auth::id());
+        if(!$uid) $uid = Auth::id();
+
+        return $this->likes()->where('likes.user_id', '=', $uid);
     }
 
     public function reviews()
