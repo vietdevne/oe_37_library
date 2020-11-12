@@ -37,22 +37,22 @@ class User extends Authenticatable
 
     public function follows() 
     {
-        return $this->hasMany(Follow::class);
+        return $this->hasMany(Follow::class, 'user_id');
     }
 
     public function borrows() 
     {
-        return $this->hasMany(Borrow::class);
+        return $this->hasMany(Borrow::class, 'user_id');
     }
 
     public function liked() 
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany(Like::class, 'user_id');
     }
 
     public function reviews() 
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class, 'user_id');
     }
 
 
