@@ -35,6 +35,11 @@ jobs:
   after_script:
   - echo "Finish job"
 
+- name: test:node
+  stage: test
+  image: node:12-alpine
+  script:
+  - yarn
 
 - name: test:phpunit
   stage: test

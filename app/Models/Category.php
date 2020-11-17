@@ -8,11 +8,10 @@ use App\Models\Book;
 
 class Category extends Model
 {
-    use SoftDeletes;
-
+    //use SoftDeletes;
     protected $table = 'categories';
     protected $primaryKey = 'cate_id';
-    protected $dates = ['deleted_at'];
+    protected $dates = ['updated_at', 'created_at', 'deleted_at'];
 
     protected $fillable = [
         'cate_name',
