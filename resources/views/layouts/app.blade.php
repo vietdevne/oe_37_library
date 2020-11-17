@@ -7,6 +7,7 @@
   <title>@yield('title')</title>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="{{ mix('css/site.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/notifications.css') }}" rel="stylesheet">
   <base href="{{ asset('') }}">
 </head>
 <body class="bg-white">
@@ -48,9 +49,21 @@
               <a class="nav-link" href="{{ route('login') }}">@lang('main.login')</a>
             </li>
             @else
+            <li class="nav-item dropdown p-2">
+              <a href="#notifications-panel" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i data-count="2" class="fas fa-bell notification-icon"></i>
+              </a>
+              <div class="dropdown-menu noti-content" aria-labelledby="notiDropdown">
+              <div class="dropdown-header">@lang('main.notification.title')
+                <span class="float-right"><a href="">@lang('main.notification.view_all')</a></span>
+                </div>
+                <a class="dropdown-item bg-warning" href="#">....</a>
+                <a class="dropdown-item" href="#">....</a>
+                <a class="dropdown-item" href="#">....</a>
+              </div>
+            </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @lang('main.hello'), <b>{{ Auth::user()->username }}</b>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">

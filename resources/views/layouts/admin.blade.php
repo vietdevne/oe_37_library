@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,10 @@
   <title>@yield('title')</title>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/notifications.css') }}" rel="stylesheet">
   <base href="{{ asset('') }}">
 </head>
+
 <body>
   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="{{ route('admin.index') }}">@lang('admin.home')</a>
@@ -16,8 +19,22 @@
       data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
+    <ul class="navbar-nav px-3 flex-md-row">
+      <li class="nav-item dropdown p-2 text-nowrap">
+        <a class="nav-link" href="#notifications-panel" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i data-count="2" class="fas fa-bell notification-icon"></i>
+        </a>
+        <div class="dropdown-menu noti-content noti-content-fix" aria-labelledby="notiDropdown">
+          <div class="dropdown-header">@lang('admin.notification.title')
+            <span class="float-right"><a href="">@lang('admin.notification.view_all')</a></span>
+          </div>
+          <a class="dropdown-item bg-warning" href="#">....</a>
+          <a class="dropdown-item" href="#">....</a>
+          <a class="dropdown-item" href="#">....</a>
+        </div>
+      </li>
+      <li class="nav-item p-2 text-nowrap">
         <a class="nav-link" href="{{ route('home') }}">@lang('main.home')</a>
       </li>
     </ul>
@@ -72,4 +89,5 @@
   </div>
   <script src="{{ mix('js/app.js') }}"></script>
 </body>
+
 </html>
