@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\RepositoryInterface\CategoryRepositoryInterface;
 use App\Repositories\RepositoryInterface\BookRepositoryInterface;
 use App\Repositories\RepositoryInterface\PublisherRepositoryInterface;
+use App\Http\Controllers\SendNotification;
 
 class HomeController extends Controller
 {
@@ -21,11 +22,13 @@ class HomeController extends Controller
     public function __construct(
         CategoryRepositoryInterface $category,
         BookRepositoryInterface $book,
-        PublisherRepositoryInterface $publisher
+        PublisherRepositoryInterface $publisher,
+        SendNotification $notification
     ) {
         $this->category = $category;
         $this->book = $book;
         $this->publisher = $publisher;
+        $this->notification = $notification;
     }
 
     /**

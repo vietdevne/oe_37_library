@@ -49,17 +49,23 @@
               <a class="nav-link" href="{{ route('login') }}">@lang('main.login')</a>
             </li>
             @else
-            <li class="nav-item dropdown p-2">
+            <li class="nav-item dropdown p-2" id="dropdown-notifications">
               <a href="#notifications-panel" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-count="2" class="fas fa-bell notification-icon"></i>
+                <i data-count="{{ count(Auth::user()->notifications) }}" class="fas fa-bell notification-icon"></i>
               </a>
               <div class="dropdown-menu noti-content" aria-labelledby="notiDropdown">
               <div class="dropdown-header">@lang('main.notification.title')
                 <span class="float-right"><a href="">@lang('main.notification.view_all')</a></span>
                 </div>
-                <a class="dropdown-item bg-warning" href="#">....</a>
-                <a class="dropdown-item" href="#">....</a>
-                <a class="dropdown-item" href="#">....</a>
+                <div id="notiContent">
+                @foreach (Auth::user()->notifications as $notification)
+                  <a class="dropdown-item" href="#"><strong>{{ $notification->data['title'] }}</strong>
+                  <br/>
+                  <span class="text-muted text">{{ $notification->data['content'] }}</span>
+                  <!--<small class="float-right">{{ $notification->created_at }}</small>-->
+                  </a>
+                @endforeach
+                </div>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -89,6 +95,7 @@
     </footer>
   </main>
   <script src="{{ mix('js/app.js') }}"></script>
+  <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
   <script src="{{ mix('js/site.js') }}"></script>
 </body>
 
