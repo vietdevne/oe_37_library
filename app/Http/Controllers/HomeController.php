@@ -41,6 +41,7 @@ class HomeController extends Controller
         $lastest = $this->book->getLastestBook();
         $publishers = $this->publisher->getRandomPublisher();
         $favourite = $this->book->getFavouriteBook();
+
         return view('home', compact('lastest', 'favourite', 'publishers'));
     }
 }

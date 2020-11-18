@@ -155,4 +155,8 @@ return [
         'delay' => 'Số ngày trễ hạn: ',
         'overdue' => 'Quá hạn nhưng chưa trả sách',
     ],
+    'chart' => [
+        'month' => 'Tháng ',
+        'users' => 'Người dùng theo tháng'
+    ]
 ];
