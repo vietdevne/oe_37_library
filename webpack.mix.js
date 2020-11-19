@@ -13,6 +13,7 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .js('public/js/custom.js','public/js/site.js')
+   .js(['public/js/Chart.min.js', 'public/js/admin.js'],'public/js/admin.js')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .styles('public/css/custom.css', 'public/css/site.css')
    .styles('public/css/bootstrap-notifications.css', 'public/css/notifications.css')

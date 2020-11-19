@@ -24,8 +24,9 @@ Route::name('admin.')
     ->prefix('admin')
     ->middleware(['auth', 'can:accessAdmin'])
     ->group(function () {
-    Route::get('dashboard', 'DashboardController@index')->name('index');   
-    Route::resources([
+        Route::get('dashboard', 'DashboardController@index')->name('index');   
+        Route::get('user-count-chart', 'DashboardController@userCountChart')->name('userchart');   
+        Route::resources([
         'users' => 'UserController',
         'authors' => 'AuthorController',
         'publishers' => 'PublisherController',
