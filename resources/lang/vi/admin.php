@@ -151,6 +151,7 @@ return [
         'request' => 'Đang chờ',
         'borrowing' => 'Đang mượn',
         'paid' => 'Đã trả',
+        'reject' => 'Đã huỷ',
         'note' => 'Ghi chú',
         'delay' => 'Số ngày trễ hạn: ',
         'overdue' => 'Quá hạn nhưng chưa trả sách',

@@ -143,10 +143,15 @@ return [
         '5' => "★★★★★",
     ],
 
+    'borr_status_accept' => 1,
+
+    'borr_status_reject' => 3,
+    
     'borr_status' => [
         '0' => 'request',
         '1' => 'borrowing',
         '2' => 'paid',
+        '3' => 'reject',
     ],
 
     /*

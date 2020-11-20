@@ -71,4 +71,11 @@ return [
         'return_date_after' => 'The return date must be after the date the book is borrowed'
     ],
     'borrow_history' => 'Borrow history',
+    'notification' => [
+        'title' => 'Notification',
+        'view_all' => 'View all',
+        'borrow_accept' => 'Accept request',
+        'borrow_reject' => 'Reject request',
+        'borrow_content' => 'Request borrow #:id - Book title: :name'
+    ]
 ];
