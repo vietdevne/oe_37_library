@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use App\Models\Book;
+use App\Enums\BorrowStatus;
 
 class Borrow extends Model
 {
@@ -42,5 +43,11 @@ class Borrow extends Model
     public function scopeStatus($query, $status)
     {
         return $query->where('borr_status', 'LIKE', '%' . $status . '%');
+    }
+
+    public function scopeCountborow($query, $firstQuarter, $lastQuarter)
+    {
+        return $query->whereBetween('updated_at', [$firstQuarter, $lastQuarter])
+            ->where('borr_status', BorrowStatus::borrowing);
     }
 }
