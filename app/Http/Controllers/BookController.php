@@ -12,9 +12,13 @@ use App\Repositories\RepositoryInterface\BaseRepositoryInterface;
 use App\Repositories\RepositoryInterface\BorrowRepositoryInterface;
 use App\Repositories\RepositoryInterface\ReviewRepositoryInterface;
 use App\Repositories\RepositoryInterface\LikeRepositoryInterface;
+use App\Http\Controllers\SendNotification;
+use Illuminate\Support\Facades\Notification;
 use Auth;
+use App\Models\User;
 use Illuminate\Support\Facades\Config;
 use App\Exports\BookExport;
+use App\Notifications\RequestToAdmin;
 use Maatwebsite\Excel\Facades\Excel;
 
 class BookController extends Controller
@@ -26,6 +30,7 @@ class BookController extends Controller
     protected $review;
     protected $borrow;
     protected $like;
+    protected $notification;
 
     public function __construct(
         BookRepositoryInterface $book, 
@@ -34,7 +39,8 @@ class BookController extends Controller
         BaseRepositoryInterface $author,
         ReviewRepositoryInterface $review,
         BorrowRepositoryInterface $borrow,
-        likeRepositoryInterface $like
+        likeRepositoryInterface $like,
+        SendNotification $notification
     ){
         $this->book = $book;
         $this->category = $category;
@@ -43,6 +49,7 @@ class BookController extends Controller
         $this->review = $review;
         $this->borrow = $borrow;
         $this->like = $like;
+        $this->notification = $notification;
     }
 
     /**
@@ -164,13 +171,21 @@ class BookController extends Controller
             'book_id' => $id,
             'user_id' => Auth::id(),
         ]);
+        $getData = $this->borrow->find($id);
+        $getAdmin = User::whereRole(config('app.admin_role'))->get();
         if(!$book)
             return abort(404);
         elseif ($book->quantity < 1) 
             return redirect()->route('admin.books.index')->with('message', ['msg' => trans('main.book.not_enough_quantity'), 'status' => 'danger']);
         elseif ($this->borrow->create($request->all()))
+            $data = [
+                'title' => trans('main.notification.title'),
+                'content' => trans('main.notification.borrow_content', ['id' => $id, 'name' => $getData->book->book_title])
+
+            ];
+            $this->notification->sendToAdmin($data);
             return redirect()->back()->with('message', ['msg' => trans('main.book.borrow.borrow_success'), 'status' => 'success']);
-   
+
         return redirect()->back()->with('message', ['msg' => trans('main.book.borrow.borrow_error'), 'status' => 'danger']);
     }
 
