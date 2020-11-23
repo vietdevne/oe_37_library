@@ -7,14 +7,20 @@ use App\Repositories\RepositoryInterface\BorrowRepositoryInterface;
 use App\Models\Borrow;
 use Carbon\Carbon;
 use App\Enums\BorrowStatus;
+use App\Http\Controllers\SendNotification;
+use Auth;
 
 class BorrowController extends Controller
 {
     protected $borrow;
+    protected $notification;
 
-    public function __construct(BorrowRepositoryInterface $borrow)
-    {
+    public function __construct(
+        BorrowRepositoryInterface $borrow,
+        SendNotification $notification
+    ){
         $this->borrow = $borrow;
+        $this->notification = $notification;
     }
     /**
      * Display a listing of the resource.
@@ -95,6 +101,12 @@ class BorrowController extends Controller
     {
         $attributes = ['borr_status' => $request->input('borr_status')];
         $this->borrow->update($id, $attributes);
+        $getData = $this->borrow->find($id);
+        if($request->input('borr_status') == config('app.borr_status_accept')){ // accept
+            $this->notification->sendToUser($getData->user_id, array('title' => trans('main.notification.borrow_accept'), 'content' => trans('main.notification.borrow_content', ['id' => $id, 'name' => $getData->book->book_title])));
+        } elseif($request->input('borr_status') == config('app.borr_status_reject')){ // reject
+            $this->notification->sendToUser($getData->user_id, array('title' => trans('main.notification.borrow_reject'), 'content' => trans('main.notification.borrow_content', ['id' => $id, 'name' => $getData->book->book_title])));
+        }
 
         return redirect()->back();
     }

@@ -9,12 +9,9 @@ use Pusher\Pusher;
 
 class SendNotification extends Controller
 {
-    public function sendToUser(User $user, Request $request)
+    public function sendToUser($user_id, $data = [])
     {
-        $data = $request->only([
-            'title',
-            'content',
-        ]);
+        $user = User::find($user_id); 
         $user->notify(new BorrowNotification($data));
         
         $options = array(

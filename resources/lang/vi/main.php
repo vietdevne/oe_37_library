@@ -76,4 +76,11 @@ return [
         'return_date_after' => 'Ngày trả sách phải sau ngày mượn sách'
     ],
     'borrow_history' => 'Lịch sử mượn',
+    'notification' => [
+        'title' => 'Thông báo',
+        'view_all' => 'Xem tất cả',
+        'borrow_accept' => 'Chấp nhận yêu cầu mượn sách',
+        'borrow_reject' => 'Huỷ yêu cầu mượn sách',
+        'borrow_content' => 'Yêu cầu mượn sách #:id - Tựa sách: :name'
+    ]
 ];

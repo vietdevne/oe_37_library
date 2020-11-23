@@ -57,9 +57,8 @@
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
                 <select class="form-control" name="borr_status" onchange="this.form.submit();">
-                    <option value="">@lang('admin.borrow_table.'.config('app.borr_status.'. $borrow->borr_status))</option>
                     @foreach(config('app.borr_status') as $key => $bor)
-                        <option value="{{ $key }}">{{ trans('admin.borrow_table.'.$bor) }}</option>
+                        <option value="{{ $key }}" @if($key == $borrow->borr_status) selected @endif>{{ trans('admin.borrow_table.'.$bor) }}</option>
                     @endforeach
                 </select>
                 <noscript><input type="submit" value="Submit"></noscript>

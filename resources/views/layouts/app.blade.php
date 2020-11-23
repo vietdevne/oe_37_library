@@ -55,7 +55,7 @@
               </a>
               <div class="dropdown-menu noti-content" aria-labelledby="notiDropdown">
               <div class="dropdown-header">@lang('main.notification.title')
-                <span class="float-right"><a href="">@lang('main.notification.view_all')</a></span>
+                <span class="float-right d-none"><a href="">@lang('main.notification.view_all')</a></span>
                 </div>
                 <div id="notiContent">
                 @foreach (Auth::user()->notifications as $notification)
