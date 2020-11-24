@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\RepositoryInterface\BorrowRepositoryInterface;
-use App\Models\Borrow;
 use Carbon\Carbon;
 use App\Enums\BorrowStatus;
 use App\Http\Controllers\SendNotification;

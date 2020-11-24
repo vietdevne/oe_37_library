@@ -158,6 +158,19 @@ return [
     ],
     'chart' => [
         'month' => 'Tháng ',
-        'users' => 'Người dùng theo tháng'
-    ]
+        'year' => 'Năm ',
+        'quarter' => 'Quý ',
+        'quarterI' => 'Quý I',
+        'quarterII' => 'Quý II',
+        'quarterIII' => 'Quý III',
+        'quarterIV' => 'Quý IV',
+        'labelMonth' => 'Số sách mượn theo tháng',
+        'labelQuarter' => 'Số sách mượn theo quý',
+        'labelYear' => 'Số sách mượn theo năm',
+        'users' => 'Người dùng theo tháng',
+        'bookMonth' => 'Số sách được mượn theo tháng',
+        'book3Month' => 'Số sách được mượn theo quý',
+        'bookYear' => 'Số sách được mượn theo Năm',
+        'chart' => 'Thống kê',
+    ],
 ];

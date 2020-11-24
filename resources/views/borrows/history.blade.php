@@ -9,31 +9,8 @@
             <li class="breadcrumb-item active" aria-current="page">{{ Auth::user()->fullname }}</li>
             <li class="breadcrumb-item">@lang('main.borrow_history')</li>
         </ol>
-    </nav>
-    <div class="row no-gutters">
-        <div class="col-md-12 text-center">
-        @if(file_exists( public_path().'/images/users/' . Auth::user()->avatar || Auth::user()->avatar != null ))
-            <img src="images/users/{{ Auth::user()->avatar }}" class="img-thumbnail p-0 mb-4 border-0 rounded-circle">   
-        @else
-            <img src="images/users/user.jpg" class="img-thumbnail p-0 mb-4 border-0 rounded-circle">
-        @endif
-        </div>
-        <div class="col-md-12">
-            <div class="card-body pt-0 text-center">
-                <h1 class="card-title">{{ Auth::user()->fullname }}</h1>
-                <p class="card-text">{!! nl2br(e(Auth::user()->fullname)) !!}</p>
-                <div class="row mt-12 text-center justify-content-center">
-                    <div class="col-sm-3 mb-2 text-center">
-                        <a href="#" class="btn btn-block btn-outline-dark">
-                            <i class="fas fa-bell" aria-hidden="true"></i> @lang('main.author.follow_author')
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-    <hr class="mt-5 mb-5">
-    <h3 class="heading mt-4">@lang('main.borrow_history')</h3>
+    </nav>  
+    <h3 class="heading mt-5">@lang('main.borrow_history')</h3>
     <div class="row">
         <table class="table table-bordered bg-white">
             <thead>
