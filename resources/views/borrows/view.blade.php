@@ -45,7 +45,9 @@
   <tbody>
 
     @foreach($borrows as $borrow)
-      <tr>
+    
+      <tr @if($borrow->borr_status == config('app.requestBorrowBook')) class="alert alert-warning" @endif>
+        
         <th scope="row">{{ $borrow->borr_id }}</th>
         <td>{{ $borrow->user->fullname }}</td>
         <td>{{ $borrow->book->book_title }}</td>

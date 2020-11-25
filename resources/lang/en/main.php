@@ -76,6 +76,10 @@ return [
         'view_all' => 'View all',
         'borrow_accept' => 'Accept request',
         'borrow_reject' => 'Reject request',
-        'borrow_content' => 'Request borrow #:id - Book title: :name'
+        'borrow_content' => 'Request borrow #:id - Book title: :name',
+        'view_all' => 'marked as viewed',
+        'mail_title' => 'Have a new borrow book request!',
+        'mail_button' => 'Click to see',
+        'mail_end' => 'Thank you!',
     ]
 ];
