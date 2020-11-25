@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class RequestToAdmin extends Notification
+class RequestToAdmin extends Notification implements ShouldQueue
 {
     use Queueable;
     protected $data;
@@ -45,9 +45,10 @@ class RequestToAdmin extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line(trans('main.notification.mail_title'))
-            ->action(trans('main.notification.mail_button'), route('admin.borrows.index'))
-            ->line(trans('main.notification.mail_end'));
+            ->greeting($this->data['title'])
+            ->subject($this->data['title'])
+            ->line($this->data['content']) 
+            ->action(trans('admin.borrow_table.title_table') , url(route('admin.borrows.index')));
     }
 
     /**
