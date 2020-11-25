@@ -81,5 +81,7 @@ return [
         'mail_title' => 'Have a new borrow book request!',
         'mail_button' => 'Click to see',
         'mail_end' => 'Thank you!',
+        'noti_everyday' => 'Daily notice',
+        'noti_everyday_content' => 'Number of books not yet borrowed:',
     ]
 ];

@@ -86,5 +86,7 @@ return [
         'mail_title' => 'Có 1 yêu cầu mượn sách mới',
         'mail_button' => 'Nhấp để xem',
         'mail_end' => 'Xin cảm ơn!',
+        'noti_everyday' => 'Thông báo hằng ngày',
+        'noti_everyday_content' => 'Số sách chưa được mượn :',
     ]
 ];
