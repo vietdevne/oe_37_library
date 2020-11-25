@@ -12,7 +12,7 @@
     <base href="{{ asset('') }}">
 </head>
 
-<body>
+<body> 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="{{ route('admin.index') }}">@lang('admin.home')</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
