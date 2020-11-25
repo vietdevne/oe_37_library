@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class BorrowNotification extends Notification
+class BorrowNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     protected $data;
@@ -30,7 +30,7 @@ class BorrowNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -42,9 +42,10 @@ class BorrowNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting($this->data['title'])
+                    ->subject($this->data['title'])
+                    ->line($this->data['content']) 
+                    ->action(trans('main.home') , url(route('home')));
     }
 
     /**

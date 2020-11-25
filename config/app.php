@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'HVBook'),
     'exportPublisher' => 'publishers.xlsx',
     'exportAuthor' => 'authors.xlsx',
     'exportUser' => 'users.xlsx',
