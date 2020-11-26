@@ -12,4 +12,5 @@ interface BorrowRepositoryInterface extends BaseRepositoryInterface
     public function getLabelsQuarter();
     public function countYear($year);
     public function getDataYear();
+    public function getBorrowing();
 }

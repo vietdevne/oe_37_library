@@ -83,5 +83,7 @@ return [
         'mail_end' => 'Thank you!',
         'noti_everyday' => 'Daily notice',
         'noti_everyday_content' => 'Number of books not yet borrowed:',
+        'borrow_msg' => 'The :name book you borrow is about to expire, the time remaining is :time',
+        'borrow_msg_expired' => 'The :name book you borrow is overdue, the overdue time is :time days'
     ]
 ];

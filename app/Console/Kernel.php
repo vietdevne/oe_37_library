@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\NotiAdminCommand'
+        'App\Console\Commands\NotiAdminCommand',
+        'App\Console\Commands\SendMailCommand'
     ];
 
     /**
@@ -28,6 +29,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('notifications:create')->dailyAt('17:00');
+        $schedule->command('mail:sendNoti')->weeklyOn(5, '8:00'); // Run the task every week on Friday at 8:00
     }
 
     /**
