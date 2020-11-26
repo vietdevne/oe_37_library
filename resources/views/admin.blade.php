@@ -15,7 +15,7 @@
             {!! $monthChart->container() !!}
         </div>
         <div class="col-md-6">
-            {!! $quarterChart->container() !!}
+            {!! $quarterChart->container() !!} 
         </div>
         <div class=" col-md-12 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mt-4 mb-4">
             <h2>@lang('admin.chart.bookYear')</h2>
