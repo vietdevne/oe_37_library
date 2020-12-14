@@ -49,4 +49,10 @@ class UserRepository implements UserRepositoryInterface
 
         return false;
     }
+
+    public function userCountByMonth($month){
+        return User::whereYear('created_at', date('Y'))
+                    ->whereMonth('created_at', $month)
+                    ->count('user_id');
+    }
 }
