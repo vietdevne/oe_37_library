@@ -60,3 +60,6 @@ Route::get('history/{id}', 'BorrowController@history')->name('borrows.history');
 Route::post('author/follow', 'AuthorController@follow')->name('author.follow');
 Route::get('category', 'BookController@showAllBook')->name('category.all');
 Route::get('category/{id}', 'BookController@showByCategory')->name('category');
+
+route::apiResource('api/books', 'Api\BookController');
+
