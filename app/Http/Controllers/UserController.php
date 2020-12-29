@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\RepositoryInterface\UserRepositoryInterface;
 use App\Exports\UserExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Auth;
 
 class UserController extends Controller
 {
@@ -92,5 +93,9 @@ class UserController extends Controller
                 ->download(Config::get('app.exportUser'));
         }
         return redirect()->back();
+    }
+    public function readNoti(){
+        Auth::user()->unreadNotifications->markAsRead();
+        return response()->json(['status' => 'success']);
     }
 }

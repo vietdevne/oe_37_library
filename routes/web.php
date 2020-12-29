@@ -47,6 +47,14 @@ Route::name('admin.')
     Route::get('users-export', 'UserController@export')->name('users.export');
     Route::get('books-export', 'BookController@export')->name('books.export');
 });
+
+Route::name('user.')
+    ->prefix('user')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::post('mark_as_read', 'UserController@readNoti')->name('users.mark_as_read_noti');
+    });
+
 Route::post('reviews', 'ReviewController@store')->name('reviews.store');
 Route::get('book/detail/{id}', 'BookController@show')->name('book.detail');
 Route::post('book/like', 'BookController@like')->name('book.like');
