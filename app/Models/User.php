@@ -10,10 +10,11 @@ use App\Models\Follow;
 use App\Models\Borrow;
 use App\Models\Like;
 use App\Models\Review;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens;
     use SoftDeletes;
 
     protected $primaryKey = 'user_id';

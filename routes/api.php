@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login', 'Api\UserController@login');
+Route::post('register', 'Api\UserController@register');
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::apiResource('review', 'Api\ReviewController')->except(['update']);
+    Route::post('details', 'Api\UserController@details');
+});
