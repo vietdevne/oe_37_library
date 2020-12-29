@@ -5,11 +5,6 @@ namespace App\Http\Controllers;
 use App\Charts\BorrowMonthChart;
 use App\Charts\BorrowQuarterChart;
 use App\Charts\BorrowYearChart;
-use App\Enums\BorrowStatus;
-use App\Models\Borrow;
-use Illuminate\Http\Request;
-use App\Models\User;
-use Carbon\Carbon;
 use App\Repositories\RepositoryInterface\BorrowRepositoryInterface;
 use App\Repositories\RepositoryInterface\UserRepositoryInterface;
 
