@@ -82,7 +82,7 @@ return [
         'borrow_accept' => 'Chấp nhận yêu cầu mượn sách',
         'borrow_reject' => 'Huỷ yêu cầu mượn sách',
         'borrow_content' => 'Yêu cầu mượn sách #:id - Tựa sách: :name',
-        'view_all' => 'Đánh dẫu đã xem',
+        'view_all' => 'Đánh dấu đã xem',
         'mail_title' => 'Có 1 yêu cầu mượn sách mới',
         'mail_button' => 'Nhấp để xem',
         'mail_end' => 'Xin cảm ơn!',
