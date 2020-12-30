@@ -56,27 +56,20 @@ class BorrowRepository extends BaseRepository implements BorrowRepositoryInterfa
             ->where('user_id', $userId)->get();
     }
 
-    public function countMonth()
-    {
-        return $this->model->all()->where('borr_status', BorrowStatus::borrowing)
-            ->groupBy(function ($borrow) {
-                return $borrow->updated_at->month;
-            })
-            ->map(function ($group) {
-                return $group->count();
-        });
+    public function countMonth($month){
+        return $this->model->whereYear('created_at', date('Y'))->whereMonth('created_at', $month)->count('borr_id');
     }
+
     public function getDataMonth(){
-        $month_count_chart = $this->countMonth();
         $mLabels = [];
         $mData = [];
-        foreach ($month_count_chart as $labels => $data) {
-            $mLabels[] = trans('admin.chart.month') . $labels;
-            $mData[] = $data;
+        for ($month = 1; $month <= 12; $month++) {
+            $mLabels[] = trans('admin.chart.month') . $month;
+            $mData[] = $this->countMonth($month);
         }
         return [
             'mLabels' => $mLabels,
-            'mdata' => $mData
+            'mdata' => $mData,
         ];
     }
 
@@ -124,24 +117,20 @@ class BorrowRepository extends BaseRepository implements BorrowRepositoryInterfa
         ];
     }
 
-    public function countYear()
+    public function countYear($year)
     {
-        return $this->model->all()->where('borr_status', BorrowStatus::borrowing)
-            ->groupBy(function ($borrow) {
-                return $borrow->updated_at->year;
-            })
-            ->map(function ($group) {
-                return $group->count();
-        });
+        return $this->model->whereYear('created_at', $year)->where('borr_status', BorrowStatus::borrowing)
+                    ->orWhere('borr_status', BorrowStatus::paid)
+                    ->count('borr_status');
     }
 
     public function getDataYear(){
-        $year_count_chart = $this->countYear();
+        $yearNow = Carbon::now()->year;
         $yLabels = [];
         $yData = [];
-        foreach ($year_count_chart as $labels => $data) {
-            $yLabels[] = trans('admin.chart.year') . $labels;
-            $yData[] = $data;
+        for ($year = $yearNow - 5; $year <= $yearNow; $year++ ) {
+            $yLabels[] = trans('admin.chart.year') . $year;
+            $yData[] = $this->countYear($year);
         }
         return [
             'yLabels' => $yLabels,
