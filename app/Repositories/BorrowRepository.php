@@ -137,5 +137,9 @@ class BorrowRepository extends BaseRepository implements BorrowRepositoryInterfa
             'ydata' => $yData
         ];
     }
+
+    public function getBorrowing() {
+        return $this->model->where('borr_status', '=', 1)->get();
+    }
     
 }
