@@ -71,3 +71,5 @@ Route::get('category/{id}', 'BookController@showByCategory')->name('category');
 
 route::apiResource('api/books', 'Api\BookController');
 
+route::get('/login/{provider}', 'SocialLoginController@redirectToProvider')->name('loginWithGoogle');
+Route::get('/login/{provide}/callback', 'SocialLoginController@handleProviderCallback');

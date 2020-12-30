@@ -65,6 +65,7 @@
                         <hr class="featurette-divider mt-4 mb-2">
                         <a href="{{ route('register') }}"
                             class="btn btn-block btn btn-outline-dark mt-4 mb-4">@lang('auth.register')</a>
+                        <a href="{{ route('loginWithGoogle', 'google') }}" class="btn btn-block btn btn-outline-dark mt-4 mb-4">@lang('main.loginGoogle')</a>
                     </form>
                 </div>
             </div>
