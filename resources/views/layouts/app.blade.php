@@ -70,7 +70,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @lang('main.hello'), <b>{{ Auth::user()->username }}</b>
+                @lang('main.hello'), <b>{{ Auth::user()->fullname }}</b>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">@lang('main.my_account')</a>

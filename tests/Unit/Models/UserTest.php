@@ -16,7 +16,6 @@ class UserTest extends ModelTestCase
     public function test_model_configuration()
     {
         $this->runConfigurationAssertions(new User(), [
-            'name',
             'username',
             'email',
             'password',
@@ -26,6 +25,8 @@ class UserTest extends ModelTestCase
             'email', 
             'gender',
             'role',
+            'provider',
+            'provider_id',
         ],[
             'password', 'remember_token',
         ]);

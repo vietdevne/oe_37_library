@@ -9,6 +9,7 @@ return [
     'authors' => 'Tác giả',
     'publishers' => 'Nhà xuất bản',
     'login' => 'Đăng nhập',
+    'loginGoogle' => 'Đăng nhập bằng Google',
     'login_msg' => 'Vui lòng đăng nhập',
     'locate_vi' => 'Tiếng Việt',
     'locate_en' => 'English',
