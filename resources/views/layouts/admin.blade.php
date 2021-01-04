@@ -23,14 +23,15 @@
             <li id="dropdown-notifications" class="nav-item dropdown p-2 text-nowrap">
                 <a class="nav-link" href="#notifications-panel" id="notiDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <i data-count="{{ count(Auth::user()->notifications) }}" class="fas fa-bell notification-icon"></i>
+                    <i data-count="{{ count(Auth::user()->unreadNotifications) }}" class="fas fa-bell notification-icon"></i>
                 </a>
                 <div class="dropdown-menu noti-content noti-content-fix" aria-labelledby="notiDropdown">
                     <div class="dropdown-header">@lang('main.notification.title')
+                        <span class="float-right"><a href="#mark-as-read" id="mark-as-read">@lang('main.notification.view_all')</a></span>
                     </div>
                     <div id="notiContent">
                         @foreach (Auth::user()->notifications as $notification)
-                            <a class="dropdown-item" href="{{ route('admin.borrows.index') }}"><strong>{{ $notification->data['title'] }}</strong>
+                        <a class="dropdown-item @if($notification->read_at == null) bg-warning @endif" href="{{ route('admin.borrows.index') }}"><strong>{{ $notification->data['title'] }}</strong>
                                 <br />
                                 <span class="text-muted text">{{ $notification->data['content'] }}</span>
                                 <!--<small class="float-right">{{ $notification->created_at }}</small>-->
